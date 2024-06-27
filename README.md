@@ -2,10 +2,11 @@
  ***ONE | Fase 3 - Especialización Back-End  G6 Alura - Oracle Next Education***
 
 [![Alura Latam](https://img.shields.io/badge/Alura-Latam-blue?style=flat)](https://www.aluracursos.com/)
-[![Static Badge](https://img.shields.io/badge/ONE-Oracle_Next_Education-orange?style=flat&logo=oracle&logoColor=orange)](https://www.oracle.com/co/education/oracle-next-education/) [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Spring_Boot-%236DB33F?logo=Spring&logoColor=white)](#) ![Static Badge](https://img.shields.io/badge/Spring%20Initializr%20-application-%236DB33F?logo=Spring&logoColor=%236DB33F)
- [![Static Badge](https://img.shields.io/badge/MySQL-RDBMS-%234479A1?logo=mysql&logoColor=white)](#)
-
+[![Static Badge](https://img.shields.io/badge/ONE-Oracle_Next_Education-orange?style=flat&logo=oracle&logoColor=orange)](https://www.oracle.com/co/education/oracle-next-education/) [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Spring_Boot-%236DB33F?logo=Spring&logoColor=white)](#) 
+![Static Badge](https://img.shields.io/badge/Spring%20Initializr%20-application-%236DB33F?logo=Spring&logoColor=%236DB33F)
+[![Static Badge](https://img.shields.io/badge/MySQL-RDBMS-%234479A1?logo=mysql&logoColor=white)](#)
 ![Static Badge](https://img.shields.io/badge/MySQL_Workbench-SQL%20Development%20Tool-blue?logo=mysql&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/Swagger-valid%2F3.0-green?logo=swagger)
 ![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)
@@ -25,11 +26,8 @@ Este es un desafío de la Especialización __Back-End G6 Alura - Oracle Next Edu
 ¿Cómo se tratan los datos para relacionar un tópico con una respuesta, o cómo se relacionan los usuarios con las respuestas de un tópico?
 
 Este es nuestro desafío, llamado ForoHub: en él, vamos a replicar este proceso a nivel de back end y, para eso, crearemos una API REST usando Spring.
+Nuestra API se centrará específicamente en los tópicos, y debe permitir a los usuarios:
 
-</p>
-
-<p>
-  Nuestra API se centrará específicamente en los tópicos, y debe permitir a los usuarios:
 </p>
 <ul>
   <li>
@@ -52,35 +50,21 @@ Este es nuestro desafío, llamado ForoHub: en él, vamos a replicar este proceso
   </li>
 </ul>
 
-<p>
-  Es lo que normalmente conocemos como CRUD* (CREATE, READ, UPDATE, DELETE) y es muy similar a lo que desarrollamos en LiterAlura, pero ahora de forma completa, 
+
+  Es lo que normalmente conocemos como ***CRUD (CREATE, READ, UPDATE, DELETE)** y es muy similar a lo que desarrollamos en LiterAlura, pero ahora de forma completa, 
 agregando las operaciones de UPDATE y DELETE, y usando un framework que facilitará mucho nuestro trabajo.
-</p>
 
-<p>
-  *Traducción libre (en orden): Crear, Consultar, Actualizar y Eliminar.
-</p>
+***Traducción libre (en orden): Crear, Consultar, Actualizar y Eliminar.**
 
-<p>
-  En resumen, nuestro objetivo con este challenge es implementar una API REST con las siguientes funcionalidades:
-</p>
+En resumen, nuestro objetivo con este challenge es implementar una API REST con las siguientes funcionalidades:
 
-<ol>
-  <li>
-    API con rutas implementadas siguiendo las mejores prácticas del modelo REST;
-  </li>
-  <li>
-    Validaciones realizadas según las reglas de negocio;
-  </li>
-  <li>
-    Implementación de una base de datos relacional para la persistencia de la información;
-  </li>
-  <li>
-    Servicio de autenticación/autorización para restringir el acceso a la información.
-  </li>
-</ol>
+- API con rutas implementadas siguiendo las mejores prácticas del modelo REST;
+- Validaciones realizadas según las reglas de negocio;
+- Implementación de una base de datos relacional para la persistencia de la información;
+- Servicio de autenticación/autorización para restringir el acceso a la información.
 
-Los pasos solicitados para completar este desafío:
+&nbsp;
+**Los pasos solicitados para completar este desafío:**
 
 1.  Configurando el entorno Java y Spring
 2.	Construcción de la base de datos
@@ -112,25 +96,25 @@ Los pasos solicitados para completar este desafío:
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Git-Github-blue?style=flat&logo=GitHub)](https://github.com/)
+![Static Badge](https://img.shields.io/badge/Spring%20Initializr%20-application-%236DB33F?logo=Spring&logoColor=%236DB33F)
 [![Static Badge](https://img.shields.io/badge/Mysql-%234479A1?logo=mysql&logoColor=white)](#)
 ![Static Badge](https://img.shields.io/badge/MySQL_Workbench-SQL%20Development%20Tool-blue?logo=mysql&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/Swagger-valid%2F3.0-green?logo=swagger)
 ![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)
 [![Static Badge](https://img.shields.io/badge/app-Trello-%231466c3?style=flat&logo=trello)](https://trello.com/)
 
-En esta primera fase, nos piden que se lleve a cabo la instalación y la configuración del entorno de desarrollo Java para nuestro desafío de construcción del desafio Literatura en un proyecto Spring. Asegúrate de contar con los siguientes programas, archivos y versiones:
+En esta primera fase, nos piden que se lleve a cabo la instalación y la configuración del entorno de desarrollo Java para nuestro desafío de construcción en un proyecto Spring. Asegúrate de contar con los siguientes programas, archivos y versiones:
 
+- Trello
+- Git y GitHub 
 - IntelliJ IDEA Community Edition
 - Java JDK: versión: 17 en adelante
-- Maven: versión 4 en adelante
-- Spring: versión 3.3.1 - https://start.spring.io/
-- MySQL: versión 16 en adelante
-- Git y GitHub 
+- Spring Initializr  - [https://start.spring.io/](https://start.spring.io/)
+- MySQL relational database management system (RDBMS)
+- MySQL Workbench: SQL Development
 - Insomnia
-- Trello
 
-Dependencias para agregar al crear el proyecto en Spring Initializr:
-
+**Dependencias para regar al crear el proyecto en Spring Initializr:**
 - Spring Data JPA
 - Lombok
 - Spring Web
@@ -294,16 +278,16 @@ Los datos de los tópicos (título, mensaje, fecha de creación, estado, autor y
 
 → Recuerda utilizar la anotación `@‌PathVariable` en tu código para recibir el campo de ID de la solicitud GET.
 
-Reglas de negocio
+**Reglas de negocio**
 
 Solicitar el campo ID para realizar la consulta es una acción obligatoria, ya que tu usuario necesita poder visualizar los detalles de un tópico solicitando una consulta a los datos en la base de datos. En este caso, es necesario verificar si el campo ID se ingresó correctamente.
 
 
 ### 7. Actualizar un tópico
 #### Actualización de tópico
-a API debe contar con un endpoint (punto final) para la actualización de los datos de un determinado tópico, y debe aceptar solicitudes del tipo PUT para la URI /tópicos/{id}.
+la API debe contar con un endpoint (punto final) para la actualización de los datos de un determinado tópico, y debe aceptar solicitudes del tipo PUT para la URI /tópicos/{id}.
 
-Observación: las mismas reglas de negocio del registro de un tópico deben aplicarse también en su actualización.
+**Observación:** las mismas reglas de negocio del registro de un tópico deben aplicarse también en su actualización.
 
 Dado que estamos realizando una consulta en la base de datos para luego actualizar un tópico, es necesario solicitar y verificar el campo ID de su solicitud.
 
@@ -331,7 +315,6 @@ En el código del proyecto, sugerimos, al igual que en la tarjeta de Detalle de 
 
 → Recuerda verificar si el tópico existe en la base de datos antes de realizar su actualización. En este caso, sugerimos el uso del método `isPresent()` de la clase Java llamada Optional.
 
-Por último, al tratarse de la eliminación de un elemento específico de la base de datos, es importante destacar la importancia del uso del método `deleteById` del JpaRepository.
 
   &nbsp
 
@@ -383,7 +366,37 @@ public class LiteraturaApplication implements CommandLineRunner {
 
 Las pruebas de las funcionalidades de la API pueden realizarse utilizando alguna herramienta de pruebas de API, como Postman o Insomnia.
 
-Insomnia: https://insomnia.rest
+En este caso utilizamos: Insomnia: https://insomnia.rest para probar la API, como por ejemplo:
+
+
+***Obtener Usuarios registrados en la base de datos:***
+
+![insomnia2](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/b37993f0-8468-4bb4-a55e-8fe703264e1c)
+
+
+***Crear Usuario:***
+
+![insomnia3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/f6b1f82a-d941-4f0f-ae78-2fda443ae1e9)
+
+
+***Eliminar Usuario:***
+
+![insomnia5](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/4e8956f8-55aa-4ea1-b544-882723b893fc)
+
+
+***Obtener Topicos registrados en la base de datos:***
+
+![insomnia6](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/e04eb2c3-e9df-4483-bfd7-425adfdb649f)
+
+
+***Crear Topicos:***
+
+![insomnia7](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/2cb9942a-4118-447e-8080-bb327c4bb676)
+
+
+***Eliminar Topicos (Cerrar Topico, no se elina de la BD, eliminacion logicamente):***
+
+![insomnia10](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/95df003d-cdb1-4bdc-b3c6-9741582a9ca5)
 
 &nbsp;
 
@@ -401,14 +414,54 @@ A partir de ahora, solo los usuarios autenticados pueden interactuar con la API.
 Implementa un mecanismo de autenticación en la API para que los usuarios puedan autenticarse y enviar solicitudes a ella.
 
 > [!NOTE]
-> Recuerda agregar la dependencia "Spring Security" en tu archivo pom.xml (si aún no lo has hecho en la etapa de configuración del entorno Java y Spring).  
+> Recuerda agregar la dependencia "Spring Security" en tu archivo pom.xml (si aún no lo has hecho en la etapa de configuración del entorno Java y Spring).
 
 
 ##### Configuración de seguridad
 Para configurar la autenticación en tu proyecto, es necesario definir tu clase SecurityConfigurations con información para el acceso a través de solicitudes http, utilizando anotaciones como @Configuration y @EnableWebSecurity, así como la clase spring HttpSecurity.
 
-> [!NOTE]
-> Te dejamos como sugerencia la documentación oficial de Spring Security (recuerda que el contenido está en inglés, pero puedes traducir la página gracias al atajo de Google Traductor en tu navegador): Spring Security
+
+***Fragmento de Codigo de la clase SecurityConfigurations***
+```java
+ // Resto del código omitido...
+ /**
+ * Configuración de seguridad para la aplicación.
+ */
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfigurations {
+
+    // Lista de rutas que se permiten sin autenticación
+    private static final String[] AUTH_WHITELIST = {
+            "/usuarios/**",
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            "/swagger-ui.html"
+    };
+
+    // Inyección del filtro de seguridad personalizado
+    @Autowired
+    private SecurityFilter securityFilter;
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+                .csrf(csrf -> csrf.disable()) // Desactiva la protección CSRF para APIs RESTful
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configura la política de sesión como stateless
+                .authorizeHttpRequests(auth -> auth
+                        // Permitir todas las solicitudes POST al endpoint /login
+                        .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        // Permitir las rutas en AUTH_WHITELIST sin autenticación
+                        .requestMatchers(AUTH_WHITELIST).permitAll()
+                        // Permitir el registro de usuarios
+                        .requestMatchers(HttpMethod.POST, "/usuario/register").permitAll()
+                        // Proteger las rutas /admin/** solo para usuarios con el rol ADMIN
+                        .requestMatchers("/admin/**").hasAuthority(ADMIN.name())
+                        .requestMatchers(HttpMethod.POST, "/cursos/**").hasAuthority(ADMIN.name())
+ // Resto del código omitido...
+```
+&nbsp;
 
 
 ##### Autenticación en el código Java
@@ -420,20 +473,31 @@ Además, utilizamos una clase DTO (en el curso implementada como instancia Recor
 > [!NOTE]
 > Recuerda utilizar las anotaciones @PostMapping, @RequestBody y @Valid para recibir y validar los datos de la solicitud.  
 
-*Fragmento de codigo utilizado en la clase `DatosLibro.java`:*
+*Fragmento de codigo utilizado en la clase `CursoController.java`:*
 ```java
  // Resto del código omitido...
 
-/**
- * Clase que representa los datos de un autor obtenidos de una fuente externa.
- */
+@RestController
+@RequestMapping("/cursos")
+@SecurityRequirement(name = "bearer-key")
+@Tag(name = "Cursos", description = "Crear, Consultar, Actualizar y Eliminar Cursos")
+public class CursoController {
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public record DatosAutor(
-        @JsonAlias("name") String nombre,
-        @JsonAlias("birth_year") int fechaNacimiento,
-        @JsonAlias("death_year") int fechaFallecimiento) {
-}
+    @Autowired
+    private CursoRepository cursoRepository;
+
+    @PostMapping
+    @Transactional
+    @Operation(summary = "Registra un curso en la base de datos")
+    public ResponseEntity<DatosRespuestaCurso> registrarCurso(
+            @RequestBody @Valid DatosRegistroCursos datosRegistroCursos,
+            UriComponentsBuilder uriComponentsBuilder) {
+
+        // Guarda el curso en la base de datos y obtiene el curso guardado
+        Curso curso = cursoRepository.save(new Curso(datosRegistroCursos));
+
+        // Construye la URL de la ubicación del nuevo curso registrado
+        URI url = uriComponentsBuilder.path("/cursos/{id}").buildAndExpand(curso.getId()).toUri();
 
  // Resto del código omitido...
 
@@ -457,6 +521,9 @@ Para agregar mayor seguridad a tu aplicación, una opción muy ventajosa es requ
 
 Esta biblioteca es importante precisamente para poder generar el token en el estándar JWT y así agregarlo en la configuración de seguridad de nuestro proyecto, creando una clase DTO UsernamePasswordAuthenticationToken para recibir el nombre de usuario y contraseña.
 
+
+&nbsp;
+
 #### Generar y validar token
 Además, es necesaria la construcción de una clase de servicio, TokenService, para aislar la generación y validación del token.
 
@@ -469,27 +536,54 @@ Por último, es necesario inyectar esta clase en tu controlador de autenticació
 > [!NOTE]
 > [IMPORTANTE] Al insertar un libro en la base también deberás insertar su autor y así mantener una relación entre los dos objetos vía atributo de identificación (o como lo llamamos, el famoso ID).
 
-*Fragmento de codigo utilizado en la clase `LibroRepository.java`:*
-```java
+![MIGRATION3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/4530f310-2358-4575-b375-e0ef911925f9)
+![MIGRATION3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/2bffee03-d9bf-4991-9f66-fe59b8c88de4)
 
-/**
- * Repositorio para realizar operaciones relacionadas con la entidad Libro en la base de datos.
- */
-public interface LibroRepository extends JpaRepository<Libro,Long> {
+*Fragmento de codigo utilizado en la clase `TokenService.java`:*
+```java
+ // Resto del código omitido...
+
+@Service
+public class TokenService {
+
+    // Inyecta el valor del secreto API desde las propiedades de la aplicación.
+    @Value("${api.security.secret}")
+    private String apiSecret;
 
     /**
-     * Busca un libro por su título, ignorando mayúsculas y minúsculas.
+     * Genera un token JWT para un usuario dado.
      *
-     * @param nombreLibro Título del libro a buscar.
-     * @return Una instancia de Libro envuelta en un Optional.
+     * @param usuario El usuario para el cual se genera el token.
+     * @return El token JWT generado.
      */
+    public String generarToken(Usuario usuario) {
+        try {
+            // Crea el algoritmo HMAC256 utilizando el secreto API.
+            Algorithm algorithm = Algorithm.HMAC256(apiSecret);
 
-    Optional<Libro> findByTituloContainingIgnoreCase(String nombreLibro);
-}
+            // Construye y firma el token JWT con las siguientes reclamaciones:
+            // - Emisor (issuer)
+            // - Sujeto (subject), que es el email del usuario
+            // - ID del usuario
+            // - Perfil del usuario
+            // - Fecha de expiración
+            return JWT.create()
+                    .withIssuer("foro alura")
+                    .withSubject(usuario.getEmail())
+                    .withClaim("id", usuario.getId())
+                    .withClaim("perfil", usuario.getPerfil().name()) // Agrega el perfil como claim
+                    .withExpiresAt(generarFechaExpiracion())
+                    .sign(algorithm);
+        } catch (JWTCreationException exception) {
+            // Maneja la excepción si ocurre un error al crear el token.
+            throw new RuntimeException("Error al generar el token JWT", exception);
+        }
+    }
 
  // Resto del código omitido...
 
 ```
+
 
 &nbsp;
 
