@@ -158,11 +158,14 @@ Es necesario definir las migraciones, por ejemplo, para la construcción de las 
 
 > [!IMPORTANTE]
 > Recuerda siempre pausar/detener la ejecución del proyecto Spring para crear/cambiar las migraciones.
+
  
-![MIGRATION](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/ae47f591-2925-4b58-89c2-a05695444a36)
+![MIGRATION3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/280ed66a-c136-47ab-a11d-1e6a364fbe2a)
 
 
-Formato para crear archivo sql para Flyway Migration:
+
+*Formato para crear archivo sql para Flyway Migration:*
+
 ```java
 V1__create-table-usuarios.sql
 V2__create-table-.........sql
@@ -177,7 +180,8 @@ forohub_alura.flyway_schema_history
 ```
 y observamos el contenido de la tabla: 
 
-![MIGRATION2](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/78768f63-1996-4bd9-8041-facd1ac4e02b)
+![MIGRATION4](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/f03e1a73-6c21-4b17-86a7-2bef94716d0d)
+
 
 &nbsp;
 
@@ -205,15 +209,23 @@ La API no debe permitir el registro de tópicos duplicados (con el mismo título
 
 &nbsp;
 
-*En este fragmento de código, de la Class "ConsumoAPI", se crea una instancia de `HttpClient` utilizando el método estático `newHttpClient()`:*
+*Fragmento de código de la Class "TopicoController":*
 ```java
-public class ConsumoAPI {
-    // Método para obtener datos desde una URL
-    public String obtenerDatos(String url){
-        // Crear un cliente HTTP
-        HttpClient client = HttpClient.newHttpClient();
-        
-         // Resto del código omitido...
+
+  // Resto del código omitido...
+
+    @PostMapping
+    @Transactional
+    @Operation(summary = "Registra un tópico en la base de datos")
+    public ResponseEntity<DatosRespuestaTopico> registrar(
+            @RequestBody @Valid DatosRegistroTopico datosRegistro,
+            UriComponentsBuilder uri) {
+        Usuario autor = usuarioRepository.getReferenceById(datosRegistro.autorId());
+        Curso curso = cursoRepository.getReferenceById(datosRegistro.cursoId());
+        Topico topico = topicoRepository.save(new Topico(datosRegistro, autor, curso));
+  // Resto del código omitido...
+    
+       
 ```
 &nbsp;
 
@@ -224,8 +236,6 @@ public class ConsumoAPI {
 [![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
 ![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)
 
-
-
 #### Listado de tópicos
 La API debe contar con un punto final para el listado de todos los tópicos, y debe aceptar solicitudes del tipo GET para la URI /tópicos.
 
@@ -234,30 +244,22 @@ Los datos de los tópicos (título, mensaje, fecha de creación, estado, autor y
 > [!IMPORTANT]
 > → Recordando que al tratar con el CRUD es necesario trabajar con JpaRepository asociado al tópico, especialmente en la lista de datos de la base de datos utilizamos el método findAll.  
 
-*Fragmento de codigo utilizado en la ConvierteDatos.java*
+*Fragmento de código de la Class "TopicoController.java":*
 ```java
- public class ConvierteDatos implements IConvierteDatos {
-    private ObjectMapper objectMapper = new ObjectMapper();
-    // Método para obtener un objeto de tipo T a partir de un JSON
-    @Override
-    public <T> T obtenerDatos(String json, Class<T> clase) {
-        try {
-            // Parsea el JSON a un JsonNode
-            JsonNode rootNode = objectMapper.readTree(json);
-
-            // Obtiene el array de resultados
-            JsonNode resultsArray = rootNode.get("results");
-
-            // Si el array de resultados no es nulo y tiene al menos un elemento
-            if (resultsArray != null && resultsArray.size() > 0) {
-                // Obtiene el primer objeto en el array de resultados
-                JsonNode firstResult = resultsArray.get(0);
-                // Convierte el primer resultado a la clase especificada
-                return objectMapper.treeToValue(firstResult, clase);
-            } else {
-                // Maneja el caso donde no se encontraron resultados
-                throw new RuntimeException("No se encontraron resultados en el JSON.");
-            }
+  /**
+     * Obtiene todos los tópicos activos en la base de datos paginados.
+     *
+     * @param paginacion La configuración de paginación para la consulta.
+     * @return ResponseEntity con una página de tópicos listados.
+     */
+    @GetMapping
+    @Operation(summary = "Consulta todos los tópicos en la base de datos")
+    public ResponseEntity<Page<DatosListadoTopico>> listar(
+            @PageableDefault(size = 10) Pageable paginacion) {
+        Page<Topico> paginaTopicos = topicoRepository.findAll(paginacion);
+        Page<DatosListadoTopico> paginaDTO = paginaTopicos.map(DatosListadoTopico::new);
+        return ResponseEntity.ok(paginaDTO);
+    }
         // Resto del código omitido...
 ```
 
@@ -282,6 +284,25 @@ Los datos de los tópicos (título, mensaje, fecha de creación, estado, autor y
 
 Solicitar el campo ID para realizar la consulta es una acción obligatoria, ya que tu usuario necesita poder visualizar los detalles de un tópico solicitando una consulta a los datos en la base de datos. En este caso, es necesario verificar si el campo ID se ingresó correctamente.
 
+*Fragmento de código de la Class "TopicoController.java":*
+```java
+   /**
+     * Consulta un tópico por su ID en la base de datos.
+     *
+     * @param id El ID del tópico a consultar.
+     * @return ResponseEntity con los datos del tópico consultado.
+     */
+    @GetMapping("/{id}")
+    @Operation(summary = "Consulta un tópico por ID en la base de datos")
+    public ResponseEntity<DatosRespuestaTopicoId> retornaDatos(
+            @PathVariable Long id) {
+        Topico topico = topicoRepository.getReferenceById(id);
+        DatosRespuestaTopicoId datosRespuesta = new DatosRespuestaTopicoId(topico);
+        return ResponseEntity.ok(datosRespuesta);
+    }
+        // Resto del código omitido...
+```
+&nbsp;
 
 ### 7. Actualizar un tópico
 #### Actualización de tópico
@@ -296,7 +317,28 @@ En el código del proyecto, sugerimos, al igual que en la tarjeta de Detalle de 
 → Recuerda verificar si el tópico existe en la base de datos para realizar su actualización. En este caso, sugerimos utilizar el método `isPresent()` de la clase Java llamada Optional.
 Esta interfaz define métodos para convertir datos de JSON a objetos Java.
 
-
+*Fragmento de código de la Class "TopicoController.java":*
+```java
+/**
+     * Actualiza un tópico en la base de datos.
+     *
+     * @param datosActualizar Los datos actualizados del tópico.
+     * @return ResponseEntity con los datos del tópico actualizado.
+     */
+    @PutMapping
+    @Transactional
+    @Operation(summary = "Actualiza un tópico en la base de datos")
+    public ResponseEntity<DatosRespuestaTopico> actualizar(
+            @RequestBody @Valid DatosActualizarTopico datosActualizar) {
+        Usuario autor = usuarioRepository.getReferenceById(datosActualizar.autorId());
+        Curso curso = cursoRepository.getReferenceById(datosActualizar.cursoId());
+        Topico topico = topicoRepository.getReferenceById(datosActualizar.id());
+        topico.actualizarDatos(datosActualizar, autor, curso);
+        DatosRespuestaTopico datosRespuesta = new DatosRespuestaTopico(topico);
+        return ResponseEntity.ok(datosRespuesta);
+    }
+        // Resto del código omitido...
+```
 &nbsp;
 
 
@@ -315,43 +357,26 @@ En el código del proyecto, sugerimos, al igual que en la tarjeta de Detalle de 
 
 → Recuerda verificar si el tópico existe en la base de datos antes de realizar su actualización. En este caso, sugerimos el uso del método `isPresent()` de la clase Java llamada Optional.
 
-
   &nbsp
 
 ```java
  // Resto del código omitido...
-   **
- * Clase principal de la aplicación Spring Boot.
- */
-
-@SpringBootApplication
-public class LiteraturaApplication implements CommandLineRunner {
-	@Autowired
-	private LibroRepository libRepository;
-
-	@Autowired
-	private AutorRepository autRepository;
-
-	/**
-	 * Método principal para iniciar la aplicación Spring Boot.
-	 * @param args Argumentos de la línea de comandos.
-	 */
-
-	public static void main(String[] args) {
-		SpringApplication.run(LiteraturaApplication.class, args);
-	}
-
-	/**
-	 * Método para ejecutar la aplicación una vez iniciada.
-	 * @param args Argumentos de la línea de comandos.
-	 * @throws Exception Excepción que puede ocurrir durante la ejecución.
-	 */
-	@Override
-	public void run(String... args) throws Exception {
-		Principal principal = new Principal(libRepository, autRepository);
-		principal.muestraElMenu();
-
-	}
+  /**
+     * Elimina un tópico por su ID en la base de datos.
+     *
+     * @param id El ID del tópico a eliminar.
+     * @return ResponseEntity indicando el éxito de la operación.
+     */
+    @DeleteMapping("/{id}")
+    @Transactional
+    @Operation(summary = "Cierra un tópico por ID en la base de datos (Elimina lógicamente). Solo perfil ADMIN",
+            description = "Para esta solicitud el usuario debe tener derechos de administrador (PERFIL ADMIN)")
+    public ResponseEntity<Void> eliminar(
+            @PathVariable Long id) {
+        Topico topico = topicoRepository.getReferenceById(id);
+        topico.cerrarTopico(); // Cambia el estado del tópico a cerrado
+        return ResponseEntity.noContent().build();
+    }
  // Resto del código omitido...
 ```
 &nbsp;
