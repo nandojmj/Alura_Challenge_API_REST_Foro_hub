@@ -10,7 +10,7 @@
 ![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)
 [![Static Badge](https://img.shields.io/badge/test-status-%23009929?logo=github)](#)
 [![Static Badge](https://img.shields.io/badge/license-MIT-blue)](#)
-![Endpoint Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2Fnandojmj%2FAlura_Challenge_Literatura.json&style=flat&logo=github&color=brightgreen)
+![Endpoint Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2Fnandojmj%2FAlura_Challenge_API_REST_Foro_hub.json&style=flat&logo=github&color=brightgreen)
 
 
 Este es un desafío de la Especialización __Back-End G6 Alura - Oracle Next Education.__ El proyecto se llama "API REST Foro Hub"
