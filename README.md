@@ -1,10 +1,9 @@
-# Alura_Challenge_API_REST_Foro_hub
 # Open Challenge Backend ONE - API REST Foro Hub
  ***ONE | Fase 3 - Especialización Back-End  G6 Alura - Oracle Next Education***
 
 [![Alura Latam](https://img.shields.io/badge/Alura-Latam-blue?style=flat)](https://www.aluracursos.com/)
 [![Static Badge](https://img.shields.io/badge/ONE-Oracle_Next_Education-orange?style=flat&logo=oracle&logoColor=orange)](https://www.oracle.com/co/education/oracle-next-education/) [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
-![Static Badge](https://img.shields.io/badge/API-Gutendex-%23e90000) ![Static Badge](https://img.shields.io/badge/Spring_Boot-%236DB33F?logo=Spring&logoColor=white) ![Static Badge](https://img.shields.io/badge/PostgresSQL-%234169E1?style=flat&logo=PostgreSQL&logoColor=white)
+[![Static Badge](https://img.shields.io/badge/Spring_Boot-%236DB33F?logo=Spring&logoColor=white)](#) [![Static Badge](https://img.shields.io/badge/Mysql-%234479A1?logo=mysql&logoColor=white)](#) 
 [![Static Badge](https://img.shields.io/badge/test-status-%23009929?logo=github)](#)
 [![Static Badge](https://img.shields.io/badge/license-MIT-blue)](#)
 ![Endpoint Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2Fnandojmj%2FAlura_Challenge_Literatura.json&style=flat&logo=github&color=brightgreen)
@@ -107,15 +106,13 @@ Los pasos solicitados para completar este desafío:
 
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-blue?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
-![Static Badge](https://img.shields.io/badge/API-Gutendex-%23e90000)
-[![Static Badge](https://img.shields.io/badge/JSON--In--Java--20220320-JAR-blue)](*) 
 [![Static Badge](https://img.shields.io/badge/Git-Github-blue?style=flat&logo=GitHub)](https://github.com/)
-![Static Badge](https://img.shields.io/badge/PostgresSQL-%234169E1?style=flat&logo=PostgreSQL&logoColor=white)
+[![Static Badge](https://img.shields.io/badge/Mysql-%234479A1?logo=mysql&logoColor=white)](#)
 [![Static Badge](https://img.shields.io/badge/Postman-gray?style=flat&logo=Postman&logoColor=orange)](https://www.postman.com/)
 [![Static Badge](https://img.shields.io/badge/app-Trello-%231466c3?style=flat&logo=trello)](https://trello.com/)
 
 En esta primera fase, nos piden que se lleve a cabo la instalación y la configuración del entorno de desarrollo Java para nuestro desafío de construcción del desafio Literatura en un proyecto Spring. Asegúrate de contar con los siguientes programas, archivos y versiones:
+
 - IntelliJ IDEA Community Edition
 - Java JDK: versión: 17 en adelante
 - Maven: versión 4 en adelante
@@ -143,17 +140,31 @@ Dependencias para agregar al crear el proyecto en Spring Initializr:
 
 &nbsp;
 
-### 2. Conociendo la API para traer datos
+### 2. Construcción de la base de datos
 [![Static Badge](https://img.shields.io/badge/Configuracion_del_entorno-%230067ff?style=flat)](#)
-![Static Badge](https://img.shields.io/badge/API-Gutendex-%23e90000)
+[![Static Badge](https://img.shields.io/badge/Mysql-%234479A1?logo=mysql&logoColor=white)](#)
 
-La API Gutendex es un catálogo de información de más de 70.000 libros presentes en Project Gutenberg (biblioteca en línea y gratuita).
+Para integrar una base de datos a nuestro proyecto Spring, nos solicitaron agregar algunas dependencias en nuestro pom.xml (en caso de que aún no las hayas agregado al configurar el entorno Java y Spring):
 
-En este paso crucial, es fundamental comprender mejor la API de los libros, revisar su documentación y aprender cómo realizar las consultas en la API. En este desafío no es necesario obtener una clave de acceso, solo realizar consultas como se describe en el sitio web oficial.
+- Validation
+- MySQL Driver
+- Spring Data JPA
+- Flyway Migration
 
-> [!NOTE]
-> Para este challenge se utilizo la siguiente API: 
-> [Gutendex-API](https://gutendex.com/), y su Repositorio de API*: GitHub - [garethbjohnson/gutendex](https://github.com/garethbjohnson/gutendex): Web API for Project Gutenberg ebook metadata .
+Además, también es importante recordar la configuración necesaria en nuestro application.properties con los datos de url, nombre de usuario y contraseña de nuestra base de datos, lo que implica definir el driver de la base de datos, así como los datos de inicio de sesión con usuario y contraseña.
+
+> [!IMPORTANTE]
+> Antes de pasar a la etapa de migraciones del proyecto, te sugerimos crear la base de datos y configurarla según se mencionó anteriormente. 
+
+#### Migración en el proyecto
+Las migraciones son comandos en lenguaje SQL para la configuración de la base de datos creada.
+
+Es necesario definir las migraciones, por ejemplo, para la construcción de las tablas de tu proyecto en archivos con extensión .sql. Además, es importante reforzar el uso de las anotaciones @‌PostMapping y @‌Transactional en tu clase controladora para realizar la persistencia de los datos.
+
+> [!IMPORTANTE]
+> Recuerda siempre pausar/detener la ejecución del proyecto Spring para crear/cambiar las migraciones.
+ 
+
 
 Interactuando con la API, encontramos como se realizan las consultas, 
 
