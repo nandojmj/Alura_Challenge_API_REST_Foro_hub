@@ -87,13 +87,14 @@ Los pasos solicitados para completar este desafío:
 7.	Eliminar un tópico
 8.	Pruebas a la API
 9.	Autenticación con Spring Security
-10.     Generar un token con JWT
-11.     Autenticación con JWT
+10.	Generar un token con JWT
+11.	Autenticación con JWT
 12. Hacer un Readme.md
 13. Extra (Opcional)
 - 13.1 Implementa otras rutas en tu aplicación - (Opcional)
 - 13.2 Documentación con Swagger - (Opcional)
-      
+
+     
 &nbsp;
 
 > [!NOTE]
@@ -118,17 +119,27 @@ En esta primera fase, nos piden que se lleve a cabo la instalación y la configu
 - IntelliJ IDEA Community Edition
 - Java JDK: versión: 17 en adelante
 - Maven: versión 4 en adelante
-- Spring: versión 3.2.3 - https://start.spring.io/
-- Postgres: versión 16 en adelante
-- JSON en Java y la librería Gson
+- Spring: versión 3.3.1 - https://start.spring.io/
+- MySQL: versión 16 en adelante
 - Git y GitHub 
-- Postman
+- Insomnia
 - Trello
 
-- Dependencias para agregar al crear el proyecto en Spring Initializr:
+Dependencias para agregar al crear el proyecto en Spring Initializr:
 
 - Spring Data JPA
-- Postgres Driver
+- Lombok
+- Spring Web
+- Spring Boot DevTools
+- Flyway Migration
+- MySQL Driver
+- Validation
+- Spring Security
+- Springdoc
+
+  ![springiforo](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/b8bb1535-5bb2-4eed-be30-f5524295caa8)
+
+  
 
 &nbsp;
 
