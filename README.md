@@ -142,6 +142,8 @@ Dependencias para agregar al crear el proyecto en Spring Initializr:
 
 ### 2. Construcción de la base de datos
 [![Static Badge](https://img.shields.io/badge/Configuracion_del_entorno-%230067ff?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Mysql-%234479A1?logo=mysql&logoColor=white)](#)
 
 Para integrar una base de datos a nuestro proyecto Spring, nos solicitaron agregar algunas dependencias en nuestro pom.xml (en caso de que aún no las hayas agregado al configurar el entorno Java y Spring):
@@ -153,7 +155,7 @@ Para integrar una base de datos a nuestro proyecto Spring, nos solicitaron agreg
 
 Además, también es importante recordar la configuración necesaria en nuestro application.properties con los datos de url, nombre de usuario y contraseña de nuestra base de datos, lo que implica definir el driver de la base de datos, así como los datos de inicio de sesión con usuario y contraseña.
 
-> [!IMPORTANTE]
+> [!NOTE]
 > Antes de pasar a la etapa de migraciones del proyecto, te sugerimos crear la base de datos y configurarla según se mencionó anteriormente. 
 
 #### Migración en el proyecto
@@ -164,46 +166,27 @@ Es necesario definir las migraciones, por ejemplo, para la construcción de las 
 > [!IMPORTANTE]
 > Recuerda siempre pausar/detener la ejecución del proyecto Spring para crear/cambiar las migraciones.
  
+![MIGRATION](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/ae47f591-2925-4b58-89c2-a05695444a36)
 
 
-Interactuando con la API, encontramos como se realizan las consultas, 
-
-
+Formato para crear archivo sql para Flyway Migration:
 ```java
-// Setting URL
-(https://gutendex.com/books/)
+V1__create-table-usuarios.sql
+V2__create-table-.........sql
+V3__create-table-.........sql
+.
+.
+.
 ```
-al realizar la consulta  en la API nos arroja lo siguiente:
+Tabla creadas en la base de datos, con registro de verciones Flyway Migration
 ```java
-{
-"count": 73568,
-"next": "https://gutendex.com/books/?page=2",
-"previous": null,
-"results": [
-{
-"id": 84,
-"title": "Frankenstein; Or, The Modern Prometheus",
-"authors": [
-{
-"name": "Shelley, Mary Wollstonecraft",
-"birth_year": 1797,
-"death_year": 1851
-}
-],
-// Resto del código omitido...
-],
-"bookshelves": [
-"Gothic Fiction",
-"Movie Books",
-"Precursors of Science Fiction",
-"Science Fiction by Women"
-],
-"languages": [
-"en"
-],
-// Resto del código omitido...
+forohub_alura.flyway_schema_history
 ```
-y observamos los key que nos sirven para nuestro proyecto: 
+y observamos el contenido de la tabla: 
+
+![MIGRATION2](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/78768f63-1996-4bd9-8041-facd1ac4e02b)
+
+
 ```java
  "title": "Frankenstein; Or, The Modern Prometheus",
  "name": "Shelley, Mary Wollstonecraft",
