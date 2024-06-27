@@ -1,3 +1,6 @@
+
+![BG_ZOOM_ONE_ESP_(1) 1](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/156160d0-e44d-48a5-bb3e-214732caacf1)
+
 # Open Challenge Backend ONE - API REST Foro Hub
  ***ONE | Fase 3 - Especialización Back-End  G6 Alura - Oracle Next Education***
 
