@@ -186,27 +186,28 @@ y observamos el contenido de la tabla:
 
 ![MIGRATION2](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/78768f63-1996-4bd9-8041-facd1ac4e02b)
 
-
-```java
- "title": "Frankenstein; Or, The Modern Prometheus",
- "name": "Shelley, Mary Wollstonecraft",
- "birth_year": 1797,
- "death_year": 1851
- "languages": [ "en"
-// Resto del código omitido...
-```
-
 &nbsp;
 
-### 3. Construyendo una solicitud de API
-#### 3.1 Construyendo el Cliente para Solicitudes (HttpClient)  
+### 3. Registro de un nuevo tópico
+
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
 ![Static Badge](https://img.shields.io/badge/API-Gutendex-%23e90000)
 [![Static Badge](https://img.shields.io/badge/Http-Client-%23ff1a00?style=flat)](#)
 
-Se utilizo la instancia HttpClient para realizar solicitudes a la API y obtener datos esenciales. El uso de`HttpClient` en Java facilita la conexión y la obtención de respuestas de manera eficiente. Se utiliza para enviar solicitudes HTTP y recibir respuestas HTTP sin la necesidad de bibliotecas externas.
+La API debe contar con un `endpoint` (punto final) para el registro de tópicos, y debe aceptar solicitudes del tipo POST para la URI /tópicos.
+Los datos del tópico (título, mensaje, autor y curso) deben ser enviados en el cuerpo de la solicitud, en formato JSON.
+
+> [!NOTE]
+>  No olvides utilizar la anotación `@RequestBody` para que tu proyecto Spring reciba correctamente los datos del cuerpo de la solicitud.
+> Además, recuerda que el tópico debe ser guardado en la base de datos construida para el proyecto, así que aquí tienes el recordatorio de utilizar el método save del JpaRepository para realizar la persistencia de los datos del tópico creado.
+
+**Sugerencia:** para ayudar en la validación de los datos, intenta utilizar la anotación Java integrada en Spring `@Valid.`
+
+#### Reglas de negocio
+Todos los campos son obligatorios, por lo tanto, es necesario verificar si todos los campos se están ingresando correctamente.
+La API no debe permitir el registro de tópicos duplicados (con el mismo título y mensaje).
 
 &nbsp;
 
@@ -222,74 +223,8 @@ public class ConsumoAPI {
 ```
 &nbsp;
 
-#### 3.2 Construyendo la Solicitud (HttpRequest)
 
-[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
-[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Http-Request-%23f7a40c?style=flat)](#)
-
-El uso de la instancia HttpRequest para configurar y personalizar nuestras solicitudes a la API Literatura. La instancia HttpRequest en Java nos brinda un control detallado sobre los parámetros de nuestras solicitudes.
-
-`HttpRequest` representa una solicitud HTTP y se utiliza para construir la solicitud HTTP que se enviará al servidor.
-
-*En este fragmento de código, de la Class"ConsumoAPI", se crea una instancia de `HttpRequest` utilizando el método `newBuilder()` de la clase `HttpRequest`, al cual se le pasa la URI del recurso solicitado.*
-```java
- public String obtenerDatos(String url){
-       // Resto del código omitido...
-
-            // Construir la solicitud HTTP con la URL proporcionada
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .build();
-        HttpResponse<String> response = null;
-        try {
-       // Resto del código omitido...
-```
-
-&nbsp;
-
-#### 3.3 Construyendo la la Respuesta (HttpResponse)
-
-[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
-[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
-![Static Badge](https://img.shields.io/badge/API-Gutendex-%23e90000)
-[![Static Badge](https://img.shields.io/badge/Http-Response-green?style=flat)](#)
-
-En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las respuestas recibidas de la API. 
-
-- `HttpResponse` representa una respuesta HTTP recibida después de enviar una solicitud HTTP al servidor.
-- Se utiliza para leer la respuesta del servidor, incluyendo el código de estado, encabezados y el cuerpo de la respuesta.
-
-
-&nbsp;
-
-*En este código, se declara una instancia de `HttpResponse.BodyHandlers.ofString())`, donde `<String>` especifica el tipo de cuerpo esperado en la respuesta, en este caso, una cadena de texto.*
-```java
- public String obtenerDatos(String url){
-       // Resto del código omitido...
-
-         // Variable para almacenar la respuesta de la solicitud
-           try {
-            // Enviar la solicitud HTTP y obtener la respuesta
-            response = client
-                    .send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException e) {
-            // Manejar excepción de E/S
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
-            // Manejar excepción de interrupción
-            throw new RuntimeException(e);
-        }
-        String json = response.body();
-        return json;
-        // Resto del código omitido...
-```
-
-&nbsp;
-
-### 4.	Analizando la respuesta en formato JSON
+### 4.	Mostrar todos los tópicos
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
@@ -298,14 +233,13 @@ En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las 
 [![Static Badge](https://img.shields.io/badge/Postman-gray?style=flat&logo=Postman&logoColor=orange)](https://www.postman.com/)
 
 
-En esta parte de  nuestro Challenge se nos solicito el análisis de la respuesta JSON en Java. La manipulación de datos JSON es esencial, ya que la mayoría de las respuestas de las API se presentan en este formato.
+#### Listado de tópicos
+La API debe contar con un punto final para el listado de todos los tópicos, y debe aceptar solicitudes del tipo GET para la URI /tópicos.
 
-→ Para facilitar el análisis de los datos que se obtendrán de la API, recomendamos el uso del sitio de API para realizar consulta de libros o autores.
-
-Con la biblioteca Jackson, puedes realizar el mapeo eficiente de los datos JSON a objetos Java, facilitando así la extracción y manipulación de la información necesaria.
+Los datos de los tópicos (título, mensaje, fecha de creación, estado, autor y curso) deben ser devueltos en el cuerpo de la respuesta, en formato JSON.
 
 > [!IMPORTANT]
-> → No olvides agregar la biblioteca Jackson al proyecto como dependencia del archivo POM.xml - sugerimos usar la versión 2.16.  
+> → Recordando que al tratar con el CRUD es necesario trabajar con JpaRepository asociado al tópico, especialmente en la lista de datos de la base de datos utilizamos el método findAll.  
 
 *Fragmento de codigo utilizado en la ConvierteDatos.java*
 ```java
@@ -336,33 +270,7 @@ Con la biblioteca Jackson, puedes realizar el mapeo eficiente de los datos JSON 
 
 &nbsp;
 
-Utilizar ObjectMapper, para acceder a las distintas propiedades de la respuesta JSON.
-
-*Fragmento de codigo utilizado en la ConvierteDatosAutor.java*
-```java
-public class ConvierteDatosAutor implements IConvierteDatos {
-    private ObjectMapper objectMapper = new ObjectMapper();
-
-    // Método para obtener un objeto de tipo T a partir de un JSON
-    @Override
-    public <T> T obtenerDatos(String json, Class<T> clase) {
-        try {
-            JsonNode rootNode = objectMapper.readTree(json);
-
-            JsonNode resultsArray = rootNode.get("results");
-
-            // Verifica si el array de resultados no es nulo y tiene al menos un elemento
-            if (resultsArray != null && resultsArray.size() > 0) {
-                // Obtiene el primer autor del primer resultado
-                JsonNode firstResult = resultsArray.get(0).get("authors").get(0);
-                // Convierte el primer autor a la clase especificada
-                return objectMapper.treeToValue(firstResult, clase);
-
-```
-
-&nbsp;
-
-### 5. Convertiendo los datos
+### 5. Detallando un tópico
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
@@ -370,188 +278,49 @@ public class ConvierteDatosAutor implements IConvierteDatos {
 [![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-blue?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 
 
-En esta etapa, llevaremos a cabo las conversiones con los datos de libros y autores, ahora que contamos con la información en nuestro poder. Se crearon varias clases y paquetes:
+#### 6. Detalle de tópicos
+La API debe contar con un endpoint (punto final) para el listado de todos los tópicos, y debe aceptar solicitudes del tipo GET para la URI /tópicos/{id}.
+
+Los datos de los tópicos (título, mensaje, fecha de creación, estado, autor y curso) deben ser devueltos en el cuerpo de la respuesta, en formato JSON.
+
+→ Recuerda utilizar la anotación `@‌PathVariable` en tu código para recibir el campo de ID de la solicitud GET.
+
+Reglas de negocio
+
+Solicitar el campo ID para realizar la consulta es una acción obligatoria, ya que tu usuario necesita poder visualizar los detalles de un tópico solicitando una consulta a los datos en la base de datos. En este caso, es necesario verificar si el campo ID se ingresó correctamente.
 
 
-![estructura](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/209bfe4a-e020-4468-b105-17a75de28d44)
+### 7. Actualizar un tópico
+#### Actualización de tópico
+a API debe contar con un endpoint (punto final) para la actualización de los datos de un determinado tópico, y debe aceptar solicitudes del tipo PUT para la URI /tópicos/{id}.
 
-### Clases Principales:
-#### Principal (com.alura.literatura.principal.Principal):
+Observación: las mismas reglas de negocio del registro de un tópico deben aplicarse también en su actualización.
 
-- Esta clase parece ser la clase principal de la aplicación. Contiene el método muestraElMenu() que muestra un menú de opciones al usuario y maneja la interacción con el usuario.
-- Utiliza instancias de LibroRepository y AutorRepository para acceder a la base de datos y realizar operaciones CRUD en las entidades Libro y Autor.
+Dado que estamos realizando una consulta en la base de datos para luego actualizar un tópico, es necesario solicitar y verificar el campo ID de su solicitud.
 
-#### Libro (com.alura.literatura.model.Libro):
+En el código del proyecto, sugerimos, al igual que en la tarjeta de Detalle de Tópicos, el uso de la anotación `@PathVariable` para obtener el ID de la solicitud `PUT`.
 
-- Esta clase representa la entidad "Libro" en el modelo de datos de la aplicación.
-- Tiene atributos como id, titulo, autor, idioma y descargas.
-- Está mapeada a una tabla llamada "libros" en la base de datos.
-- La clase proporciona métodos para acceder y modificar sus atributos, así como un método toString() para imprimir información sobre el libro.
-
-#### Autor (com.alura.literatura.model.Autor):
-
-- Esta clase representa la entidad "Autor" en el modelo de datos de la aplicación.
-- Tiene atributos como id, nombre, fechaNacimiento y fechaFallecimiento.
-- Está mapeada a una tabla llamada "autores" en la base de datos.
-- La clase proporciona métodos para acceder y modificar sus atributos, así como un método toString() para imprimir información sobre el autor.
-
-#### LibroRepository (com.alura.literatura.repository.LibroRepository):
-
-- Esta interfaz proporciona métodos para realizar operaciones CRUD en la entidad Libro.
-- Extiende JpaRepository de Spring Data JPA.
-
-#### AutorRepository (com.alura.literatura.repository.AutorRepository):
-
-- Esta interfaz proporciona métodos para realizar operaciones CRUD en la entidad Autor.
-- Extiende JpaRepository de Spring Data JPA.
-
-#### LiteraturaApplication (com.alura.literatura.LiteraturaApplication):
-
-- Esta clase es la clase principal de Spring Boot que inicia la aplicación.
-- Implementa CommandLineRunner y utiliza instancias de LibroRepository y AutorRepository para iniciar la aplicación y mostrar el menú principal.
-  
-### Servicios y Utilidades:
-#### AutorServicio (com.alura.literatura.service.AutorServicio):
-
-- Este servicio proporciona métodos para obtener información sobre autores.
-- Utiliza AutorRepository para acceder a la base de datos y obtener datos sobre autores.
-
-#### LibroServicio (com.alura.literatura.service.LibroServicio):
-
-- Este servicio proporciona métodos para obtener información sobre libros.
-- Utiliza LibroRepository para acceder a la base de datos y obtener datos sobre libros.
-
-#### ConvierteDatos (com.alura.literatura.service.ConvierteDatos) y ConvierteDatosAutor (com.alura.literatura.service.ConvierteDatosAutor):
-
-- Estas clases proporcionan métodos para convertir datos de JSON a objetos Java utilizando la biblioteca Jackson ObjectMapper.
-- Implementan la interfaz IConvierteDatos.
-
-#### IConvierteDatos (com.alura.literatura.service.IConvierteDatos):
-
+→ Recuerda verificar si el tópico existe en la base de datos para realizar su actualización. En este caso, sugerimos utilizar el método `isPresent()` de la clase Java llamada Optional.
 Esta interfaz define métodos para convertir datos de JSON a objetos Java.
 
 
-
-&nbsp;
-
-```
-            +--------------------------------------------+
-            |              LiteraturaApplication         |
-            |                    |                       |
-            |      +-------------+-------------+         |
-            |      |             |             |         |
-            | LibroRepository AutorRepository  Principal |
-            |      |             |             |         |
-            +--------------------------------------------+
-                   |
-                   |
-            +------v------+    +--------------------+
-            | LibroServicio|    |  AutorServicio    |
-            +------+-------+    +--------+----------+
-                   |                     |
-                   v                     v
-            +------+-------+    +--------+----------+
-            |  LibroDTO   |    |     AutorDTO       |
-            +------+-------+    +--------+----------+
-                   |                     |
-                   +-----------+---------+
-                               |
-                               v
-                       +-------+---------+
-                       | IConvierteDatos |
-                       +-------+---------+
-                               |
-                     +---------+-----------+
-                     | ConvierteDatos      |
-                     | ConvierteDatosAutor |
-                     +---------------------+
-
-
-```
-
-Este diagrama muestra la relación entre las principales clases y componentes del proyecto "Alura Literatura". En la parte superior se encuentran las clases principales como LiteraturaApplication y Principal, que actúan como la interfaz de usuario y coordinan las operaciones principales del sistema.
-
-Las interfaces LibroRepository y AutorRepository interactúan directamente con la capa de acceso a datos y proporcionan métodos para realizar operaciones CRUD en libros y autores. Estas interfaces son implementadas por clases específicas de Spring Data JPA que manejan la comunicación con la base de datos PostgreSQL.
-
-Los servicios LibroServicio y AutorServicio encapsulan la lógica de negocio relacionada con la gestión de libros y autores. Estos servicios utilizan los repositorios para acceder a los datos y proporcionan métodos para convertir los datos de las entidades de dominio en DTOs (Data Transfer Objects) que son más adecuados para ser enviados al frontend de la aplicación.
-
-La interfaz IConvierteDatos define los métodos para convertir datos entre diferentes formatos, como JSON y objetos Java. Las implementaciones concretas de esta interfaz, ConvierteDatos y ConvierteDatosAutor, utilizan la biblioteca Jackson ObjectMapper para realizar la conversión de datos.
-
-Finalmente, los DTOs LibroDTO y AutorDTO representan versiones simplificadas de las entidades de dominio Libro y Autor. Estos DTOs se utilizan para transferir datos entre el backend y el frontend de la aplicación, evitando la exposición directa de las entidades de dominio y facilitando la comunicación entre las diferentes capas del sistema.
-
-&nbsp;
-
-*Fragmento de codigo utilizado en la clase `libro.java`:*
-```java
-@Entity
-@Table(name="libros")
-public class Libro {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String titulo;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "autor_id")
-    private Autor autor;
-    private String idioma;
-    private Double descargas;
-
-    // Constructor sin argumentos
-    public Libro() {}
-
-    // Constructor con argumentos
-    public Libro(String titulo, Autor autor, List<String> idiomas, Double descargas) {
-        this.titulo = titulo;
-        this.autor = autor;
-        this.idioma = idiomas != null && !idiomas.isEmpty() ? String.join(",", idiomas) : null;
-        this.descargas = OptionalDouble.of(descargas).orElse(0);
-    }
- 
- // Resto del código omitido...
-
-```
 &nbsp;
 
 
-*Fragmento de codigo utilizado en la clase `autor.java`:*
-```java
-@Entity
-@Table(name = "autores")
-public class Autor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nombre;
-    private int fechaNacimiento;
-    private int fechaFallecimiento;
-
-    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Libro> libros;
-
-    // Constructor sin argumentos
-    public Autor() {
-    }
-
-    // Constructor con argumentos
-    public Autor(String nombre, int fechaNacimiento, int fechaFallecimiento) {
-        this.nombre = nombre;
-        this.fechaNacimiento = fechaNacimiento;
-        this.fechaFallecimiento = fechaFallecimiento;
-    }
- 
- // Resto del código omitido...
-
-```
-
-&nbsp;
-
-
-### 6. Interactuando con el usuario
+### 8. Eliminar un tópico
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
 
-En esta etapa del desafío, se solicito  la interacción con el usuario, El método Main debe implementar la interfaz CommandLineRunner y su método run() donde deberás llamar un método para exhibir el menu. En este método, debes crear un bucle para presentar a tu usuario las opciones de insercion y consulta. El usuario deberá seleccionar un número que corresponderá a la opcion numérica y proporcionar los datos que la aplicación recibirá, utilizando la clase Scanner para capturar la entrada do usuário.
+La API debe contar con un endpoint para la eliminación de un tópico específico, el cual debe aceptar solicitudes del tipo `DELETE` para la URI `/tópicos/{id}`.
+
+Dado que estamos realizando una consulta en la base de datos para luego actualizar un tópico, es necesario solicitar y verificar el campo ID de su solicitud.
+
+En el código del proyecto, sugerimos, al igual que en la tarjeta de Detalle de Tópicos, el uso de la anotación `@PathVariable` para obtener el ID de la solicitud PUT.
+
+→ Recuerda verificar si el tópico existe en la base de datos antes de realizar su actualización. En este caso, sugerimos el uso del método `isPresent()` de la clase Java llamada Optional.
+
+Por último, al tratarse de la eliminación de un elemento específico de la base de datos, es importante destacar la importancia del uso del método `deleteById` del JpaRepository.
 
   &nbsp
 
@@ -594,106 +363,51 @@ public class LiteraturaApplication implements CommandLineRunner {
 &nbsp;
 
 
-```java
- // Resto del código omitido...
-    // Método para mostrar el menú en consola
-    private void mostrarMenu() {
-        var menu = """
-                
-                -----------------------------------------------------------------------------
-                                 Challenge Literatura Alura-Oracle ONE G6
-                -----------------------------------------------------------------------------
-                Por favor, seleccione una opción del menú ingresando el número correspondiente:
-                1- Consultar y guardar libros desde la API 
-                2- Listar libros registrados en la BD
-                3- Listar autores registrados en la BD
-                4- Buscar autores vivos en un determinado año de la BD
-                5- Buscar libros registrados en la BD por idioma
-                6- Buscar autores por nombre en la BD
-                7- Buscar los 10 libros más descargados de la API
-                8- Buscar los 10 libros más descargados en la BD
-                9- Búsqueda de autores nacidos después de un año específico en la BD   
-                10- Buscar autores fallecidos antes de un año específico en la BD  
-                0 - Salir
-            """;
-        System.out.println(menu);
-    }
-
-    // Método para obtener la opción del usuario
-    private int obtenerOpcionDelUsuario() {
-        System.out.print("Ingrese su opción: ");
-        return teclado.nextInt();
-    }
- // Resto del código omitido...
-```
-&nbsp;
-
-### 7. Consultar libros
+### 9. Pruebas de la API
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 ![Static Badge](https://img.shields.io/badge/API-Gutendex-%23e90000)
  ![Static Badge](https://img.shields.io/badge/PostgresSQL-%234169E1?style=flat&logo=PostgreSQL&logoColor=white)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
 
-En esta parte del desafio, realizamos la consulta por título del libro en la API para retener el primer resultado obtenido. Un libro debe tener los siguientes atributos:
+Las pruebas de las funcionalidades de la API pueden realizarse utilizando alguna herramienta de pruebas de API, como Postman o Insomnia.
 
-- Título;
-- Autor;
-- Idiomas;
-- Número de Descargas.
-
-Con esta funcionalidad lista, será posible presentar en la consola un listado de todos los libros que ya fueron buscados.
-
-Además, también debes posibilitar al usuario ver un listado con base en el idioma que uno o más libros fueron escritos, con la ayuda de las derived queries.
-
-En resumen tenemos estas dos funcionalidades obligatorias en el proyecto:
-
-- Búsqueda de libro por título
-- Lista de todos los libros
-
-*Fragmento de codigo utilizado en la clase `DatosLibro.java`:*
-```java
- // Resto del código omitido...
-**
- * Clase que representa los datos de un libro obtenidos de una fuente externa.
- */
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-public record DatosLibro(
-    @JsonAlias("title") String titulo,
-    @JsonAlias("name") Autor autor,
-    @JsonAlias("languages") List<String> idioma,
-    @JsonAlias("download_count") Double descargas){
-}
-
- // Resto del código omitido...
-
-```
+Insomnia: https://insomnia.rest
 
 &nbsp;
 
 
-  ### 8. Consultar Autores
+  ### 10. Autenticación con Spring Security
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 ![Static Badge](https://img.shields.io/badge/API-Gutendex-%23e90000)
  ![Static Badge](https://img.shields.io/badge/PostgresSQL-%234169E1?style=flat&logo=PostgreSQL&logoColor=white)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
 
-Como podemos ver en el sitio web de la API, cada libro tiene datos relacionados con sus autores, en este caso el cuerpo de json recibe una lista de autores por libro, donde cada autor tiene tres características:
+#### Autenticación
+A partir de ahora, solo los usuarios autenticados pueden interactuar con la API.
 
-Nombre;
-Año de nacimiento;
-Año de fallecimiento.
+Implementa un mecanismo de autenticación en la API para que los usuarios puedan autenticarse y enviar solicitudes a ella.
 
-Al guardar los datos de los autores, tendremos la opción de listado de los autores de los libros buscados.
+> [!NOTE]
+> Recuerda agregar la dependencia "Spring Security" en tu archivo pom.xml (si aún no lo has hecho en la etapa de configuración del entorno Java y Spring).  
 
-Además, pensando en los años de nacimiento y fallecimiento, es posible incluso realizar una consulta de autores vivos en un determinado año. 
 
-En resumen tenemos estas dos funcionalidades obligatorias relacionadas a los autores:
+##### Configuración de seguridad
+Para configurar la autenticación en tu proyecto, es necesario definir tu clase SecurityConfigurations con información para el acceso a través de solicitudes http, utilizando anotaciones como @Configuration y @EnableWebSecurity, así como la clase spring HttpSecurity.
 
-Lista de autores
-Listar autores vivos en determinado año
+> [!NOTE]
+> Te dejamos como sugerencia la documentación oficial de Spring Security (recuerda que el contenido está en inglés, pero puedes traducir la página gracias al atajo de Google Traductor en tu navegador): Spring Security
+
+
+##### Autenticación en el código Java
+El proceso de autenticación en la API se realiza con la implementación de un controller responsable de recibir las solicitudes de inicio de sesión. Asegúrate de utilizar las anotaciones @RestController y @RequestMapping para definir la URL del controller.
+
+Además, utilizamos una clase DTO (en el curso implementada como instancia Record en Java) para recibir los datos de inicio de sesión y contraseña, y luego autenticar al usuario en el método AuthenticationManager presente en la clase SecurityConfigurations.
+
+
+> [!NOTE]
+> Recuerda utilizar las anotaciones @PostMapping, @RequestBody y @Valid para recibir y validar los datos de la solicitud.  
 
 *Fragmento de codigo utilizado en la clase `DatosLibro.java`:*
 ```java
@@ -718,24 +432,32 @@ public record DatosAutor(
 
  
 
-  ### 9. Persistencia de datos
+### 11. Generar un token con JWT
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 ![Static Badge](https://img.shields.io/badge/API-Gutendex-%23e90000)
 ![Static Badge](https://img.shields.io/badge/PostgresSQL-%234169E1?style=flat&logo=PostgreSQL&logoColor=white)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
 
-En esta parte se nos solicito enfocarnos en construir una base de datos, con tablas y atributos relacionados a nuestros objetos de interés: Libro y Autor.
+#### Token JWT
+Para agregar mayor seguridad a tu aplicación, una opción muy ventajosa es requerir tokens para autenticación. El JWT (JSON Web Token) es un estándar utilizado para compartir información entre cliente y servidor que será muy útil en esta tarea.
 
-En este desafío vamos a utilizar una base de datos en PostgreSQL, llamada "alura_Literatura", un gestor de bases de datos open source más utilizadas en el mercado.
+> [!NOTE]
+> Para poder utilizar el JWT es necesario agregar su biblioteca en nuestro pom.xml como dependencia. Accede al sitio para obtener la biblioteca en Java de Auth0: JWT.IO
 
-Sugerimos la creación de clases de entidad/modelo para Libro y Autor, así como también sus respectivas interfaces de repositorio para manejar inserción y consultas en la base de datos.
+Esta biblioteca es importante precisamente para poder generar el token en el estándar JWT y así agregarlo en la configuración de seguridad de nuestro proyecto, creando una clase DTO UsernamePasswordAuthenticationToken para recibir el nombre de usuario y contraseña.
 
-→ No olvides usar las anotaciones correctas y de importar JpaRepository, porque estamos trabajando con un proyecto Spring con Spring Data JPA, así que puede manejar las funciones necesarias para nuestro desafío java con persistencia de datos.
+#### Generar y validar token
+Además, es necesaria la construcción de una clase de servicio, TokenService, para aislar la generación y validación del token.
 
-Al crear los repositorios de libros y autores, recuerda realizar la conversión de los atributos del libro presentes en el resultado json para un objeto java correspondiente al libro, así quedará más fácil manejar los datos obtenidos en tu proyecto.
+En la clase, se ha implementado el método "generarToken()", utilizando la biblioteca JWT para crear un token con el algoritmo HMAC256 y una contraseña. También se ha añadido la funcionalidad de configurar la fecha de expiración del token.
 
-[IMPORTANTE] Al insertar un libro en la base también deberás insertar su autor y así mantener una relación entre los dos objetos vía atributo de identificación (o como lo llamamos, el famoso ID).
+Dentro de esta clase, se debe implementar el método "generarToken()" que utiliza la biblioteca JWT para generar el token con el algoritmo HMAC256 y una contraseña secreta. Además, también es importante definir la fecha de expiración del token.
+
+Por último, es necesario inyectar esta clase en tu controlador de autenticación, y así obtener el token retornado en la respuesta de la solicitud de inicio de sesión.
+
+> [!NOTE]
+> [IMPORTANTE] Al insertar un libro en la base también deberás insertar su autor y así mantener una relación entre los dos objetos vía atributo de identificación (o como lo llamamos, el famoso ID).
 
 *Fragmento de codigo utilizado en la clase `LibroRepository.java`:*
 ```java
@@ -759,222 +481,26 @@ public interface LibroRepository extends JpaRepository<Libro,Long> {
 
 ```
 
-
-*Fragmento de codigo utilizado en la clase `AutorRepository.java`:*
-```java
-/**
- * Repositorio para realizar operaciones relacionadas con la entidad Autor en la base de datos.
- */
-
-public interface AutorRepository extends JpaRepository<Autor,Long> {
-    /**
-     * Busca un autor por su nombre, ignorando mayúsculas y minúsculas.
-     *
-     * @param nombreAutor Nombre del autor a buscar.
-     * @return Una instancia de Autor envuelta en un Optional.
-     */
-    Optional<Autor> findByNombreContainingIgnoreCase(String nombreAutor);
-
-    /**
-     * Busca autores nacidos después de un año específico.
-     *
-     * @param fecha Año límite de nacimiento.
-     * @return Una lista de autores nacidos después del año especificado.
-     */
-    @Query("SELECT a FROM Autor a WHERE a.fechaNacimiento > :fecha")
-    List<Autor> findByFechaNacimientoAfter(@Param("fecha") int fecha);
- // Resto del código omitido...
-
-```
-
-
-  ### 10. Listando libros por idiomas
-[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
-[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
- ![Static Badge](https://img.shields.io/badge/PostgresSQL-%234169E1?style=flat&logo=PostgreSQL&logoColor=white)
-[![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
-
-Se nos solicito que una vez que ya tienes libros y autores guardados en tu base de datos, aprovechar los recursos de Streams de Java y derived queries para brindar tu usuario con estadísticas sobre la cantidad de libros en un determinado idioma en la base de datos.
-
-No es necesario crear opciones para todos los idiomas. Elija como mínimo dos idiomas.
-
-En resumen tenemos esta funcionalidad obligatoria en el proyecto:
-
-Exhibir cantidad de libros en un determinado idioma
-
-&nbsp;
-
-*Fragmento de codigo utilizado en la clase `Principal.java`:*
-```java
-
-  public void mostrarLibrosPorIdioma() {
-        libros = libRepositorio.findAll();
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println("-------------- Búsqueda de libros registrados en la BD por idioma ----------------");
-        System.out.println("----------------------------------------------------------------------------------");
-                System.out.println("Ingrese el idioma del que desea buscar los libros: en (english), es (español), fr (frances)");
-        String idiomaBuscado = teclado.nextLine();
-        List<Libro> librosBuscados = libros.stream()
-                .filter(l -> l.getIdioma().contains(idiomaBuscado))
-                .collect(Collectors.toList());
-        librosBuscados.forEach(System.out::println);
-    }
-
- // Resto del código omitido...
-
-```
-&nbsp;
- ### 11. Listando autores vivos en determinado año
-[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
-[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
-![Static Badge](https://img.shields.io/badge/PostgresSQL-%234169E1?style=flat&logo=PostgreSQL&logoColor=white)
-
-Se nos solicito que una vez que ya tienes libros y autores guardados en tu base de datos, cambiar el método para listar los autores vivos en determinado año. Para eso, debes utilizar las derived queries para recuperar todos los autores que estaban vivos en el año que el usuario te informará.
-
-Se realizaron varias consultas con las derived queries:
-
-*Fragmento de codigo utilizado en la clase `Principal.java`:*
-```java
-
-     */
-    Optional<Autor> findByNombreContainingIgnoreCase(String nombreAutor);
-
-    /**
-     * Busca autores nacidos después de un año específico.
-     *
-     * @param fecha Año límite de nacimiento.
-     * @return Una lista de autores nacidos después del año especificado.
-     */
-    @Query("SELECT a FROM Autor a WHERE a.fechaNacimiento > :fecha")
-    List<Autor> findByFechaNacimientoAfter(@Param("fecha") int fecha);
-
-    /**
-     * Busca autores fallecidos antes de un año específico.
-     *
-     * @param fecha Año límite de fallecimiento.
-     * @return Una lista de autores fallecidos antes del año especificado.
-     */
-    @Query("SELECT a FROM Autor a WHERE a.fechaFallecimiento < :fecha")
-    List<Autor> findByFechaFallecimientoBefore(@Param("fecha") int fecha);
-
- // Resto del código omitido...
-
-```
-
-*Fragmento de codigo utilizado en la clase `Principal.java`:*
-```java
- public void mostrarAutoresVivosEnUnDeterminadoAno() {
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println("------------- Búsqueda de autores vivos en un año especifico ---------------------");
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.print("Ingrese un año: ");
-        int anio = teclado.nextInt();
-        List<Autor> autores = autorRepository.findAll();
-// Resto del código omitido...
-
-```
 &nbsp;
 
 ### 12. **Hacer un README:** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 Uno de los pasos más importantes al participar en una selección de trabajo es resolver un desafío propuesto por la empresa con la información de la resolución, y generalmente esto debe estar en el README. ¿Y qué es el README? Es un archivo con extensión .md y es un documento con la descripción del proyecto. 
 Este mismo archivo que se esta leyendo fue el resultado del README para el Challenge.
 
+&nbsp;
+### 13.	**Implementa otras rutas en tu aplicación - (Opcional)** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 
-### 13.	**Extra (Opcional)** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
+#### Implementa otras rutas en tu aplicación
 
-Se nos propueso nn caso que quiecieramos desafiarnos aún más y proporcionar a los usuarios una experiencia más rica y personalizada, hay diversas funcionalidades interesantes que puedes explorar:
+Para nuestro foro estar completo deberíamos tener otras rutas o endopints que nos permitirán crear, listar, actualizar y eliminar otras informaciones además de los tópicos como:
 
-#### 13.1  Generando estadísticas: [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
-Funcionalidades opcionales, obtener datos estadísticos de un objeto Java. Es posible obtener dichos datos ya sea de consultas de la API o base de datos.
-
-Presentar los datos de los 10 libros más descargados en la base de datos.
-
-```java
-    // Método para buscar los 10 libros más descargados registrados en la base de datos
-    public void buscarLibrosTop10EnLaDB() {
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println("----------- Top 10 de libros más descargados registrados en  la BD ---------------");
-        System.out.println("----------------------------------------------------------------------------------");
-        try {
-            List<Libro> libros = libRepositorio.findAll();
-            List<Libro> librosOrdenados = libros.stream()
-                    .sorted(Comparator.comparingDouble(Libro::getDescargas).reversed())
-                    .collect(Collectors.toList());
-            List<Libro> topLibros = librosOrdenados.subList(0, Math.min(10, librosOrdenados.size()));
-            for (int i = 0; i < topLibros.size(); i++) {
-                System.out.println((i + 1) + ". " + topLibros.get(i));
-            }
-        } catch (NullPointerException e) {
-            System.out.println("Error al buscar los libros en la base de datos: " + e.getMessage());
-            libros = new ArrayList<>();
-    // Resto del código omitido...
-
-```
-
-####  13.2  Top 10 de libros más descargados de la API: [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
-
-Presentar los datos de los 10 libros más descargados, siendo una consulta directamente hecha en la API.
-
-```java
-    // Método para buscar los 10 libros más descargados de la API
-    public void buscarLibrosTop10EnAPI() {
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println("---------------- Top 10 de libros más descargados de la API ----------------------");
-        System.out.println("----------------------------------------------------------------------------------");
-        try {
-            String json = consumoAPI.obtenerDatos(URL_BASE + "?sort");
-
-            List<DatosLibro> datosLibros = conversor.obtenerDatosArray(json, DatosLibro.class);
-            List<DatosAutor> datosAutor = conversorAutor.obtenerDatosArray(json, DatosAutor.class);
-
-            List<Libro> libros = new ArrayList<>();
-            for (int i = 0; i < datosLibros.size(); i++) {
-                Autor autor = new Autor(
-                        datosAutor.get(i).nombre(),
-                        datosAutor.get(i).fechaNacimiento(),
-                        datosAutor.get(i).fechaFallecimiento());
-// Resto del código omitido...
-```
-
-#### 13.3 Buscar autor por nombre [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
-
-   Si has echado un vistazo al sitio de la API es posible realizar la búsqueda de libro o autor con la consulta hecha con search? - sin embargo, en este caso te desafiamos a realizar la consulta por nombre de autor en la base de datos creada para nuestro proyecto.
-
-```java
-   public interface AutorRepository extends JpaRepository<Autor,Long> {
-    /**
-     * Busca un autor por su nombre, ignorando mayúsculas y minúsculas.
-     *
-     * @param nombreAutor Nombre del autor a buscar.
-     * @return Una instancia de Autor envuelta en un Optional.
-     */
-    Optional<Autor> findByNombreContainingIgnoreCase(String nombreAutor);
-// Resto del código omitido...
-
-```
-
-
-```java
-// Método para mostrar libros por idioma desde la base de datos
-    public void mostrarLibrosPorIdioma() {
-        libros = libRepositorio.findAll();
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println("-------------- Búsqueda de libros registrados en la BD por idioma ----------------");
-        System.out.println("----------------------------------------------------------------------------------");
-                System.out.println("Ingrese el idioma del que desea buscar los libros: en (english) o es (español)");
-        String idiomaBuscado = teclado.nextLine();
-        List<Libro> librosBuscados = libros.stream()
-                .filter(l -> l.getIdioma().contains(idiomaBuscado))
-                .collect(Collectors.toList());
-        librosBuscados.forEach(System.out::println);
-    }
-```
+- /usuario
+- /respuestas
 &nbsp;
 
-#### 13.4. Listar autores con otras consultas. [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
+### 14. Documentación con Swagger - (Opcional) [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 
-  Implementar otras consultas con los atributos de año de nacimiento y fallecimiento de los autores. Siéntete libre de explorar e implementar estas características adicionales.
+  Ahora es el momento de documentar tu API con SpringFox Swagger. Swagger es una herramienta extremadamente ventajosa para tu API, ya que ofrece una interfaz amigable y accesible, así como una forma de documentación automática generada simultáneamente con el desarrollo de la API.
   
 ```java
     
