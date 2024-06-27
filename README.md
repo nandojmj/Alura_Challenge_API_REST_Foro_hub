@@ -76,36 +76,24 @@ agregando las operaciones de UPDATE y DELETE, y usando un framework que facilita
   </li>
 </ol>
 
-
-
-
-
-
-
 Los pasos solicitados para completar este desafío:
 
 1.  Configurando el entorno Java y Spring
-2.	Conociendo la API para traer datos
-3.	Construyendo una solicitud de API
-- 3.1	Construyendo el Cliente para Solicitudes (HttpClient)
-- 3.2	Construyendo la Solicitud (HttpRequest)
-- 3.3	Construyendo la la Respuesta (HttpResponse)
-4.	Analizando la respuesta en formato JSON
-5.	Convertiendo los datos
-6.	Interactuando con el usuario
-7.	Consultando Libros
-8.	Consultando Autores
-9.	Persistencia de datos
-10. Listando libros por idiomas
-11.  Listando autores vivos en determinado año
+2.	Construcción de la base de datos
+3.	Registro de un nuevo tópico
+4.	Mostrar todos los tópicos
+5.	Detallando un tópico
+6.	Actualizar un tópico
+7.	Eliminar un tópico
+8.	Pruebas a la API
+9.	Autenticación con Spring Security
+10.     Generar un token con JWT
+11.     Autenticación con JWT
 12. Hacer un Readme.md
 13. Extra (Opcional)
-- 13.1 Generando estadísticas
-- 13.2 Top 10 libros más descargados
-- 13.3 Buscar autor por nombre
-- 13.4 Listar autores con otras consultas
-    
-   
+- 13.1 Implementa otras rutas en tu aplicación - (Opcional)
+- 13.2 Documentación con Swagger - (Opcional)
+      
 &nbsp;
 
 > [!NOTE]
