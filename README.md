@@ -1,7 +1,7 @@
 
 ![BG_ZOOM_ONE_ESP_(1) 1](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/156160d0-e44d-48a5-bb3e-214732caacf1)
 
-# Open Challenge Backend ONE - API REST Foro Hub
+## Open Challenge Backend ONE - API REST Foro Hub
  ***ONE | Fase 3 - Especialización Back-End  G6 Alura - Oracle Next Education***
 
 [![Alura Latam](https://img.shields.io/badge/Alura-Latam-blue?style=flat)](https://www.aluracursos.com/)
@@ -31,30 +31,14 @@ Este es un desafío de la Especialización __Back-End G6 Alura - Oracle Next Edu
 Este es nuestro desafío, llamado ForoHub: en él, vamos a replicar este proceso a nivel de back end y, para eso, crearemos una API REST usando Spring.
 Nuestra API se centrará específicamente en los tópicos, y debe permitir a los usuarios:
 
-</p>
-<ul>
-  <li>
-    Crear un nuevo tópico;
-  </li>
-  <li>
-    Mostrar todos los tópicos creados;
-  </li>
-  <li>
-    Mostrar un tópico específico;
-  </li>
-  <li>
-    Mostrar un tópico específico;
-  </li>
-  <li>
-    Actualizar un tópico;
-  </li>
-  <li>
-    Eliminar un tópico.
-  </li>
-</ul>
+- Crear un nuevo tópico;
+- Mostrar todos los tópicos creados;
+- Mostrar un tópico específico;
+- Mostrar un tópico específico;
+- Actualizar un tópico;
+- Eliminar un tópico.
 
-
-  Es lo que normalmente conocemos como ***CRUD (CREATE, READ, UPDATE, DELETE)** y es muy similar a lo que desarrollamos en LiterAlura, pero ahora de forma completa, 
+Es lo que normalmente conocemos como ***CRUD (CREATE, READ, UPDATE, DELETE)** y es muy similar a lo que desarrollamos en LiterAlura, pero ahora de forma completa, 
 agregando las operaciones de UPDATE y DELETE, y usando un framework que facilitará mucho nuestro trabajo.
 
 ***Traducción libre (en orden): Crear, Consultar, Actualizar y Eliminar.**
@@ -118,6 +102,7 @@ En esta primera fase, nos piden que se lleve a cabo la instalación y la configu
 - Insomnia
 
 **Dependencias para regar al crear el proyecto en Spring Initializr:**
+
 - Spring Data JPA
 - Lombok
 - Spring Web
@@ -128,7 +113,7 @@ En esta primera fase, nos piden que se lleve a cabo la instalación y la configu
 - Spring Security
 - Springdoc
 
-  ![springiforo](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/b8bb1535-5bb2-4eed-be30-f5524295caa8)
+![springiforo](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/b8bb1535-5bb2-4eed-be30-f5524295caa8)
 
   
 
@@ -276,12 +261,12 @@ Los datos de los tópicos (título, mensaje, fecha de creación, estado, autor y
 [![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-blue?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 
 
-#### 6. Detalle de tópicos
+### 6. Detalle de tópicos
 La API debe contar con un endpoint (punto final) para el listado de todos los tópicos, y debe aceptar solicitudes del tipo GET para la URI /tópicos/{id}.
 
 Los datos de los tópicos (título, mensaje, fecha de creación, estado, autor y curso) deben ser devueltos en el cuerpo de la respuesta, en formato JSON.
 
-→ Recuerda utilizar la anotación `@‌PathVariable` en tu código para recibir el campo de ID de la solicitud GET.
+> Before you begin, ensure Recuerda utilizar la anotación `@‌PathVariable` en tu código para recibir el campo de ID de la solicitud GET.
 
 **Reglas de negocio**
 
