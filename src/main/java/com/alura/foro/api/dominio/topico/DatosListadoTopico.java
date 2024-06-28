@@ -10,6 +10,7 @@ public record DatosListadoTopico(
         String mensaje, // Mensaje o contenido del tema
         String autor, // Nombre del autor del tema
         String curso // Nombre del curso asociado al tema
+
 ) {
 
     /**

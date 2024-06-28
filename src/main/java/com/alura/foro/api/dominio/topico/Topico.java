@@ -107,6 +107,20 @@ public class Topico {
     }
 
     /**
+     * Método para desactivar un tópico.
+     */
+    public void desactivartopico() {
+        this.activo = false;
+    }
+
+    /**
+     * Método para activar un tópico.
+     */
+    public void activartopico() {
+        this.activo = true;
+    }
+
+    /**
      * Método para cerrar un tópico, cambiando su estado a CERRADO.
      */
     public void cerrarTopico() {

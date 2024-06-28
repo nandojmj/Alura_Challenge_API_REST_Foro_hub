@@ -8,7 +8,9 @@ public record DatosRespuestaUsuario(
         Long id,
         String nombre,
         String email,
-        String perfil) {
+        String contrasena,
+        String perfil,
+        Boolean activo) {
 
     /**
      * Constructor para convertir un objeto Usuario en DatosRespuestaUsuario.
@@ -21,6 +23,9 @@ public record DatosRespuestaUsuario(
                 usuario.getId(),
                 usuario.getNombre(),
                 usuario.getEmail(),
-                usuario.getPerfil().toString());
+                usuario.getContrasena(),
+                usuario.getPerfil().toString(),
+                usuario.getActivo());
     }
+
 }

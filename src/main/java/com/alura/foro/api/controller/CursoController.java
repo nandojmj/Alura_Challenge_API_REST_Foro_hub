@@ -106,19 +106,15 @@ public class CursoController {
     @Transactional
     @Operation(summary = "Actualizar los cursos en la base de datos. Solo perfil ADMIN",
     description = "Para esta solicitud el usuario debe tener derechos de administrador (PERFIL ADMIN)")
-    public ResponseEntity<DatosRespuestaCurso> actualizarCurso(
-            @RequestBody @Valid DatosActualizarCurso datosActualizarCurso) {
-
+    public ResponseEntity DatosRespuestaCurso(@RequestBody @Valid DatosActualizarCurso datosActualizarCurso) {
         // Obtiene el curso por su ID para actualizarlo
         Curso curso = cursoRepository.getReferenceById(datosActualizarCurso.id());
-
         // Actualiza los datos del curso
         curso.actualizarCurso(datosActualizarCurso);
-
         // Devuelve una respuesta con los datos actualizados del curso
-        return ResponseEntity.ok(new DatosRespuestaCurso(
-                curso.getNombre(), curso.getCategoria()));
+        return ResponseEntity.ok(new DatosRespuestaCurso(curso.getNombre(), curso.getCategoria()));
     }
+
 
     /**
      * Endpoint para eliminar lógicamente un curso por su ID.

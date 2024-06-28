@@ -8,8 +8,9 @@ public record DatosListadoUsuario(
         Long id,         // El ID único del usuario.
         String nombre,   // El nombre del usuario.
         String email,    // El correo electrónico del usuario.
-        String perfil) { // El perfil del usuario convertido a String.
-
+        String contrasena, //La contraseña del usuario
+        String perfil, // El perfil del usuario convertido a String.
+        Boolean activo) {
     /**
      * Constructor que acepta un objeto `Usuario` y extrae sus campos para inicializar el record.
      *
@@ -20,7 +21,9 @@ public record DatosListadoUsuario(
                 usuario.getId(),               // Inicializa el campo `id` con el ID del usuario.
                 usuario.getNombre(),           // Inicializa el campo `nombre` con el nombre del usuario.
                 usuario.getEmail(),            // Inicializa el campo `email` con el email del usuario.
-                usuario.getPerfil().toString() // Convierte el perfil del usuario a String para inicializar el campo `perfil`.
+                usuario.getContrasena(),        // Inicializa el campo `contrasena` con la contraseña del usuario.
+                usuario.getPerfil().toString(), // Convierte el perfil del usuario a String para inicializar el campo `perfil`.
+                usuario.getActivo()
         );
     }
 }

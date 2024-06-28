@@ -42,18 +42,18 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
             """)
     Boolean findActivoByEmail(String username);
 
-    /**
-     * Consulta para encontrar un usuario inactivo por email.
-     *
-     * @param username El email del usuario.
-     * @return El usuario inactivo.
-     */
-    @Query("""
-            select u.activo 
-            from Usuario u
-            where u.email=:username
-            """)
-    Usuario findNoActivo(String username);
+//    /**
+//     * Consulta para encontrar un usuario inactivo por email.
+//     *
+//     * @param username El email del usuario.
+//     * @return El usuario inactivo.
+//     */
+//    @Query("""
+//            select u.activo
+//            from Usuario u
+//            where u.email=:username
+//            """)
+//    Usuario findNoActivo(String username);
 
     /**
      * Consulta para encontrar un usuario por email y verificar si está activo.

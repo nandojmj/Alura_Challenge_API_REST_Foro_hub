@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Controlador REST para gestionar operaciones relacionadas con los tópicos del foro.
@@ -73,10 +75,11 @@ public class TopicoController {
     @Operation(summary = "Consulta todos los tópicos en la base de datos")
     public ResponseEntity<Page<DatosListadoTopico>> listar(
             @PageableDefault(size = 10) Pageable paginacion) {
-        Page<Topico> paginaTopicos = topicoRepository.findAll(paginacion);
+        Page<Topico> paginaTopicos = topicoRepository.findByActivoTrue(paginacion);
         Page<DatosListadoTopico> paginaDTO = paginaTopicos.map(DatosListadoTopico::new);
         return ResponseEntity.ok(paginaDTO);
     }
+
 
     /**
      * Consulta un tópico por su ID en la base de datos.
@@ -91,6 +94,24 @@ public class TopicoController {
         Topico topico = topicoRepository.getReferenceById(id);
         DatosRespuestaTopicoId datosRespuesta = new DatosRespuestaTopicoId(topico);
         return ResponseEntity.ok(datosRespuesta);
+    }
+
+    /**
+     * Activa un tópico en la base de datos.
+     *
+     *  @return ResponseEntity indicando el éxito de la operación.
+     */
+    @GetMapping("/activa/{id}")
+    @Transactional
+    @Operation(summary = "Activa un tópico existente en la base de datos, Solo perfil ADMIN",
+    description = "Para esta solicitud el usuario debe tener derechos de administrador (PERFIL ADMIN)")
+    public ResponseEntity activarTopico(@PathVariable Long id) {
+        Optional<Topico> topicoOptional = topicoRepository.findById(id);
+        if (topicoOptional.isPresent()) {
+            Topico topico = topicoOptional.get();
+            topico.activartopico();
+        }
+        return ResponseEntity.noContent().build();
     }
 
     /**
@@ -113,19 +134,45 @@ public class TopicoController {
     }
 
     /**
-     * Elimina un tópico por su ID en la base de datos.
-     *
+     * Elimina un tópico por su ID logicamente.
+     * Lo cierra y lo desactiva
      * @param id El ID del tópico a eliminar.
      * @return ResponseEntity indicando el éxito de la operación.
      */
     @DeleteMapping("/{id}")
     @Transactional
-    @Operation(summary = "Cierra un tópico por ID en la base de datos (Elimina lógicamente). Solo perfil ADMIN",
+    @Operation(summary = "Desactiva y cierra un tópico por ID en la base de datos (Elimina lógicamente). Solo perfil ADMIN",
             description = "Para esta solicitud el usuario debe tener derechos de administrador (PERFIL ADMIN)")
-    public ResponseEntity<Void> eliminar(
-            @PathVariable Long id) {
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         Topico topico = topicoRepository.getReferenceById(id);
+        topico.desactivartopico();
         topico.cerrarTopico(); // Cambia el estado del tópico a cerrado
         return ResponseEntity.noContent().build();
+        // RETORNA 204  No Content
     }
+
+    /**
+     * Elimina un tópico por su ID en la base de datos.
+     *
+     * @param id El ID del tópico a eliminar.
+     * @return ResponseEntity indicando el éxito de la operación.
+     */
+    @DeleteMapping("/eliminar/{id}")
+    @Transactional
+    @Operation(summary = "Elimina un tópico por ID en la base de datos. Solo perfil ADMIN",
+              description = "Para esta solicitud el usuario debe tener derechos de administrador (PERFIL ADMIN)")
+    public ResponseEntity eliminarTopico(@PathVariable Long id) {
+        Optional<Topico> topicoOptional = topicoRepository.findById(id);
+        if (topicoOptional.isPresent()) {
+            Topico topico = topicoOptional.get();
+            topicoRepository.deleteById(topico.getId());
+            return ResponseEntity.ok().body("El topico se eliminó exitosamente");
+        }
+        return ResponseEntity.noContent().build();
+        // RETORNA 204  No Content
+    }
+
+
+
+
 }
