@@ -136,6 +136,8 @@ Para integrar una base de datos a nuestro proyecto Spring, nos solicitaron agreg
 
 Además, también es importante recordar la configuración necesaria en nuestro application.properties con los datos de url, nombre de usuario y contraseña de nuestra base de datos, lo que implica definir el driver de la base de datos, así como los datos de inicio de sesión con usuario y contraseña.
 
+![BD3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/a659d376-8fa9-4b26-be3c-8a3441d26581)
+
 > [!NOTE]
 > Antes de pasar a la etapa de migraciones del proyecto, te sugerimos crear la base de datos y configurarla según se mencionó anteriormente. 
 
