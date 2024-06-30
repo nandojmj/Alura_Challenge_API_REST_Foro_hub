@@ -96,6 +96,8 @@ public class TopicoController {
         return ResponseEntity.ok(datosRespuesta);
     }
 
+
+
     /**
      * Activa un tópico en la base de datos.
      *
@@ -172,7 +174,32 @@ public class TopicoController {
         // RETORNA 204  No Content
     }
 
+    // Método para listar tópicos por usuario (autor)
+    @GetMapping("/usuario/{usuarioId}")
+    @Operation(summary = "Consulta tópicos por usuario (autor)")
+    public ResponseEntity<List<DatosListadoTopico>> listarPorUsuario(@PathVariable Long usuarioId) {
+        List<Topico> topicos = topicoRepository.findByUsuarioId(usuarioId);
+        List<DatosListadoTopico> datosTopicos = topicos.stream().map(DatosListadoTopico::new).toList();
+        return ResponseEntity.ok(datosTopicos);
+    }
 
+    // Método para listar tópicos por curso
+    @GetMapping("/curso/{cursoId}")
+    @Operation(summary = "Consulta tópicos por curso")
+    public ResponseEntity<List<DatosListadoTopico>> listarPorCurso(@PathVariable Long cursoId) {
+        List<Topico> topicos = topicoRepository.findByCursoId(cursoId);
+        List<DatosListadoTopico> datosTopicos = topicos.stream().map(DatosListadoTopico::new).toList();
+        return ResponseEntity.ok(datosTopicos);
+    }
+
+    // Método adicional para listar tópicos por estado
+    @GetMapping("/estado")
+    @Operation(summary = "Consulta tópicos por estado")
+    public ResponseEntity<List<DatosListadoTopico>> listarPorEstado(@RequestParam("estado") Estado estado) {
+        List<Topico> topicos = topicoRepository.findByEstado(estado);
+        List<DatosListadoTopico> datosTopicos = topicos.stream().map(DatosListadoTopico::new).toList();
+        return ResponseEntity.ok(datosTopicos);
+    }
 
 
 }
