@@ -101,7 +101,10 @@ public class AdminController {
     @PatchMapping("/usuarios")
     @Transactional
     @Operation(summary = "Actualiza el usuario en la base de datos")
-    public ResponseEntity DatosRespuestaUsuario(@RequestBody @Valid DatosActualizarUsuario datosActualizar) {
+    public ResponseEntity DatosRespuestaUsuario(
+            @RequestBody @Valid DatosActualizarUsuario datosActualizar) {
+
+        // Utiliza el servicio para actualizar los datos del usuario
         DatosRespuestaUsuario datosRespuesta = usuarioService.actualizarUsuarioAdmin(datosActualizar);
 
         // Devuelve una respuesta con los datos actualizados del usuario

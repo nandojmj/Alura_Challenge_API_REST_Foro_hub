@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 // Interfaz que gestiona la interacción con la base de datos para la entidad Topico
@@ -24,6 +25,16 @@ public interface TopicoRepository extends JpaRepository<Topico, Long> {
     // Listar tópicos por estado
     @Query("SELECT t FROM Topico t WHERE t.estado = :estado AND t.activo = true")
     List<Topico> findByEstado(@Param("estado") Estado estado);
+
+    // Listar tópicos por fecha de creación
+    @Query("SELECT t FROM Topico t WHERE t.fechaCreacion >= :fechaInicio AND t.fechaCreacion <= :fechaFin AND t.activo = true")
+    List<Topico> findByFechaCreacionBetween(@Param("fechaInicio") LocalDateTime fechaInicio, @Param("fechaFin") LocalDateTime fechaFin);
+
+    // Listar tópicos que tienen respuestas
+    @Query("SELECT t FROM Topico t WHERE t.respuestas IS NOT EMPTY AND t.activo = true")
+    List<Topico> findWithRespuestas();
+
+
 }
 
 

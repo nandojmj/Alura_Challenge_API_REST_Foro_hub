@@ -42,19 +42,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
             """)
     Boolean findActivoByEmail(String username);
 
-//    /**
-//     * Consulta para encontrar un usuario inactivo por email.
-//     *
-//     * @param username El email del usuario.
-//     * @return El usuario inactivo.
-//     */
-//    @Query("""
-//            select u.activo
-//            from Usuario u
-//            where u.email=:username
-//            """)
-//    Usuario findNoActivo(String username);
-
     /**
      * Consulta para encontrar un usuario por email y verificar si está activo.
      *
@@ -96,5 +83,32 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
                             @Param("contrasena") String contrasena,
                             @Param("activo") Boolean activo,
                             @Param("perfil") Perfil perfil);
+
+
+//    // Método para actualizar el nombre del usuario si se proporciona
+//    @Modifying
+//    @Query("UPDATE Usuario u SET u.nombre = :nombre WHERE u.id = :id AND :nombre IS NOT NULL")
+//    void actualizarNombre(@Param("id") Long id, @Param("nombre") String nombre);
+//
+//    // Método para actualizar el email del usuario si se proporciona
+//    @Modifying
+//    @Query("UPDATE Usuario u SET u.email = :email WHERE u.id = :id AND :email IS NOT NULL")
+//    void actualizarEmail(@Param("id") Long id, @Param("email") String email);
+//
+//    // Método para actualizar la contraseña del usuario si se proporciona
+//    @Modifying
+//    @Query("UPDATE Usuario u SET u.contrasena = :contrasena WHERE u.id = :id AND :contrasena IS NOT NULL")
+//    void actualizarContrasena(@Param("id") Long id, @Param("contrasena") String contrasena);
+//
+//    // Método para actualizar el estado activo del usuario si se proporciona
+//    @Modifying
+//    @Query("UPDATE Usuario u SET u.activo = :activo WHERE u.id = :id AND :activo IS NOT NULL")
+//    void actualizarActivo(@Param("id") Long id, @Param("activo") Boolean activo);
+//
+//    // Método para actualizar el perfil del usuario si se proporciona
+//    @Modifying
+//    @Query("UPDATE Usuario u SET u.perfil = :perfil WHERE u.id = :id AND :perfil IS NOT NULL")
+//    void actualizarPerfil(@Param("id") Long id, @Param("perfil") Perfil perfil);
 }
+
 

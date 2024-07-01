@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Configuration;
                          )
                  ).info(new Info().title("Challenge Back End" +
                                  " API REST FORO HUB ALURA")
-                         .version("V.5").description("Challenge API Rest de la aplicación Foro Hub Alura"+
+                         .version("G.6 - 2024").description("Challenge API Rest de la aplicación Foro Hub Alura"+
                                  "ONE | Fase 3 - Especialización Back-End G6 - Alura - Oracle Next Education. " +
                                  " Curso de Java: Spring Boot 3."+
                                  " Foro donde todos los usuarios de la plataforma pueden plantear sus preguntas sobre determinados tópicos").contact(new Contact()

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -200,6 +201,27 @@ public class TopicoController {
         List<DatosListadoTopico> datosTopicos = topicos.stream().map(DatosListadoTopico::new).toList();
         return ResponseEntity.ok(datosTopicos);
     }
+
+    // Método para listar tópicos por fecha de creación
+    @GetMapping("/fecha")
+    @Operation(summary = "Consulta tópicos por fecha de creación")
+    public ResponseEntity<List<DatosListadoTopico>> listarPorFecha(
+            @RequestParam("fechaInicio") LocalDateTime fechaInicio,
+            @RequestParam("fechaFin") LocalDateTime fechaFin) {
+        List<Topico> topicos = topicoRepository.findByFechaCreacionBetween(fechaInicio, fechaFin);
+        List<DatosListadoTopico> datosTopicos = topicos.stream().map(DatosListadoTopico::new).toList();
+        return ResponseEntity.ok(datosTopicos);
+    }
+
+    // Método para listar tópicos con respuestas
+    @GetMapping("/con_respuestas")
+    @Operation(summary = "Consulta tópicos con respuestas")
+    public ResponseEntity<List<DatosListadoTopico>> listarConRespuestas() {
+        List<Topico> topicos = topicoRepository.findWithRespuestas();
+        List<DatosListadoTopico> datosTopicos = topicos.stream().map(DatosListadoTopico::new).toList();
+        return ResponseEntity.ok(datosTopicos);
+    }
+
 
 
 }

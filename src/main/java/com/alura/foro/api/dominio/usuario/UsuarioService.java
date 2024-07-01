@@ -88,4 +88,35 @@ public class UsuarioService {
         return new DatosRespuestaUsuario(usuario);
 
     }
+
+//    // Método para actualizar los datos de un usuario por el administrador
+//    public DatosRespuestaUsuario actualizarUsuarioAdmin(DatosActualizarUsuario datosActualizar) {
+//        // Verifica si el usuario existe
+//        Usuario usuario = usuarioRepository.findById(datosActualizar.id())
+//                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
+//
+//        // Realiza actualizaciones condicionales
+//        if (datosActualizar.nombre() != null) {
+//            usuarioRepository.actualizarNombre(datosActualizar.id(), datosActualizar.nombre());
+//        }
+//        if (datosActualizar.email() != null) {
+//            usuarioRepository.actualizarEmail(datosActualizar.id(), datosActualizar.email());
+//        }
+//        if (datosActualizar.contrasena() != null) {
+//            usuarioRepository.actualizarContrasena(datosActualizar.id(), datosActualizar.contrasena());
+//        }
+//        if (datosActualizar.activo() != null) {
+//            usuarioRepository.actualizarActivo(datosActualizar.id(), datosActualizar.activo());
+//        }
+//        if (datosActualizar.perfil() != null) {
+//            usuarioRepository.actualizarPerfil(datosActualizar.id(), datosActualizar.perfil());
+//        }
+//
+//        // Vuelve a cargar el usuario actualizado
+//        usuario = usuarioRepository.findById(datosActualizar.id())
+//                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado después de la actualización"));
+//
+//        // Devuelve los datos actualizados del usuario
+//        return new DatosRespuestaUsuario(usuario);
+//    }
 }
