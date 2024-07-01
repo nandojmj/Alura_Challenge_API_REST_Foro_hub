@@ -638,7 +638,11 @@ Para nuestro foro estar completo deberíamos tener otras rutas o endopints que n
 ### 14. Documentación con Swagger - (Opcional) ![Static Badge](https://img.shields.io/badge/Swagger-valid%2F3.0-green?logo=swagger)
  [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 
-  Ahora es el momento de documentar tu API con Spring Swagger. Swagger es una herramienta extremadamente ventajosa para tu API, ya que ofrece una interfaz amigable y accesible, así como una forma de documentación automática generada simultáneamente con el desarrollo de la API.
+Se nos solicito documentar nuestra  API con Spring Swagger. Swagger es una herramienta extremadamente ventajosa para tu API, ya que ofrece una interfaz amigable y accesible, así como una forma de documentación automática generada simultáneamente con el desarrollo de la API. Es una herramienta basada en el estándar OpenAPI que nos permite documentar y probar nuestros Web APIs,
+
+```
+http://localhost:8080/swagger-ui/index.html
+```
 
  ![swagger_login](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/b7f3fffa-e829-4ca2-927d-d164132a84a1)
 
@@ -675,7 +679,7 @@ Para ejecutar el proyecto, sigue estos pasos:
 * Clona o descarga desde Github el repositorio en tu disco local.
 * Importa el proyecto en tu IDE de Java (este proyecto se realizo en IntelliJ IDEA).
 * Configura las dependencias y ajusta la configuración según sea necesario.
-* Corre la aplicación para interactuar con consola.
+* Corre la aplicación para interactuar con la base de datos y alguna herramienta de pruebas de API, como Postman o Insomnia.
 
 
 ## 14. Video Y Capturas de pantalla  [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
