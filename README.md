@@ -127,10 +127,11 @@ Para integrar una base de datos a nuestro proyecto Spring, nos solicitaron agreg
 - Spring Data JPA
 - Flyway Migration
 
-[![BD3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/a659d376-8fa9-4b26-be3c-8a3441d26581)](#)
+![BD3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/a659d376-8fa9-4b26-be3c-8a3441d26581)
+
 *Diagrama implementad para crear base de datos*
 
-Base de datos MySQL (nombre de esquema: forohub_)
+Base de datos MySQL (Nombre de esquema: ***forohub_alura***)
 
 > [!NOTE]
 > Antes de pasar a la etapa de migraciones del proyecto, te sugerimos crear la base de datos y configurarla según se mencionó anteriormente. 
@@ -142,7 +143,7 @@ Las migraciones son comandos en lenguaje SQL para la configuración de la base d
 > Recuerda siempre pausar/detener la ejecución del proyecto Spring para crear/cambiar las migraciones.
 
  
-[![MIGRATION3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/280ed66a-c136-47ab-a11d-1e6a364fbe2a)](#)
+![MIGRATION3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/280ed66a-c136-47ab-a11d-1e6a364fbe2a)
 *Formato para crear archivo sql para Flyway Migration:*
 
 ```java
@@ -159,7 +160,7 @@ forohub_alura.flyway_schema_history
 ```
 y observamos el contenido de la tabla: 
 
-[![MIGRATION4](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/f03e1a73-6c21-4b17-86a7-2bef94716d0d)](#)
+![MIGRATION4](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/f03e1a73-6c21-4b17-86a7-2bef94716d0d)
 
 &nbsp;
 
@@ -361,32 +362,32 @@ En este caso utilizamos: Insomnia: https://insomnia.rest para probar la API, com
 
 ***Obtener Usuarios registrados en la base de datos:***
 
-[![insomnia2](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/b37993f0-8468-4bb4-a55e-8fe703264e1c)](#)
+![insomnia2](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/b37993f0-8468-4bb4-a55e-8fe703264e1c)
 
 
 ***Crear Usuario:***
 
-[![insomnia3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/f6b1f82a-d941-4f0f-ae78-2fda443ae1e9)](#)
+![insomnia3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/f6b1f82a-d941-4f0f-ae78-2fda443ae1e9)
 
 
 ***Eliminar Usuario:***
 
-[![insomnia5](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/4e8956f8-55aa-4ea1-b544-882723b893fc)](#)
+![insomnia5](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/4e8956f8-55aa-4ea1-b544-882723b893fc)
 
 
 ***Obtener Topicos registrados en la base de datos:***
 
-[![insomnia6](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/e04eb2c3-e9df-4483-bfd7-425adfdb649f)](#)
+![insomnia6](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/e04eb2c3-e9df-4483-bfd7-425adfdb649f)
 
 
 ***Crear Topicos:***
 
-[![insomnia7](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/2cb9942a-4118-447e-8080-bb327c4bb676)](#)
+![insomnia7](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/2cb9942a-4118-447e-8080-bb327c4bb676)
 
 
 ***Eliminar Topicos (Cerrar Topico, no se elina de la BD, eliminacion logicamente):***
 
-[![insomnia10](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/95df003d-cdb1-4bdc-b3c6-9741582a9ca5)](#)
+![insomnia10](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/95df003d-cdb1-4bdc-b3c6-9741582a9ca5)
 
 &nbsp;
 
@@ -515,11 +516,6 @@ En la clase, se ha implementado el método "generarToken()", utilizando la bibli
 
 Por último, es necesario inyectar esta clase en tu controlador de autenticación, y así obtener el token retornado en la respuesta de la solicitud de inicio de sesión.
 
-> [!NOTE]
-> [IMPORTANTE] Al insertar un libro en la base también deberás insertar su autor y así mantener una relación entre los dos objetos vía atributo de identificación (o como lo llamamos, el famoso ID).
-
-[![MIGRATION3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/4530f310-2358-4575-b375-e0ef911925f9)](#)
-
 *Fragmento de codigo utilizado en la clase `TokenService.java`:*
 ```java
  // Resto del código omitido...
@@ -642,23 +638,9 @@ Para nuestro foro estar completo deberíamos tener otras rutas o endopints que n
 ### 14. Documentación con Swagger - (Opcional) ![Static Badge](https://img.shields.io/badge/Swagger-valid%2F3.0-green?logo=swagger)
  [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 
-  Ahora es el momento de documentar tu API con SpringFox Swagger. Swagger es una herramienta extremadamente ventajosa para tu API, ya que ofrece una interfaz amigable y accesible, así como una forma de documentación automática generada simultáneamente con el desarrollo de la API.
+  Ahora es el momento de documentar tu API con Spring Swagger. Swagger es una herramienta extremadamente ventajosa para tu API, ya que ofrece una interfaz amigable y accesible, así como una forma de documentación automática generada simultáneamente con el desarrollo de la API.
   
-```java
-    
-    // Método para buscar autores nacidos después de una fecha en la base de datos
-    public void buscarAutoresNacidosDespuesDeFecha() {
-        try {
-            System.out.println("----------------------------------------------------------------------------------");
-            System.out.println("------------ Búsqueda de autores nacidos después de un año específico ------------");
-            System.out.println("----------------------------------------------------------------------------------");
-            System.out.print("Ingrese el año para buscar autores nacidos después de: ");
-            int fechaLimite = Integer.parseInt(teclado.nextLine());
 
-            List<Autor> autores = autorRepository.findByFechaNacimientoAfter(fechaLimite);
-
-            if (autores.isEmpty()) {
-```
     
 &nbsp;
  
@@ -673,63 +655,6 @@ Para ejecutar el proyecto, sigue estos pasos:
 
 
 ## 14. Video Y Capturas de pantalla
-
-&nbsp;
-![gutendexgeneral](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/51186fd4-403d-466f-9baf-6c8a12ddb378)
-&nbsp;
-
-![Captura](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/5c211392-b33f-49c2-a588-36cafdf82f12)
-
-
-![1](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/a8d60904-3d5a-41fb-9eac-f35dc739e0dc)
-
-![2](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/70528498-d91e-4d69-8ec0-6cf2a16360c3)
-
-![3](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/7a41aa97-8f3e-4897-8519-686dd002d8db)
-
-![5](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/7b6aaf16-f314-46aa-a0a6-4159fb7a756e)
-
-![6](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/a8e42a5c-bde8-4442-94ab-9ee23466d081)
-
-![7](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/cb5655bb-1251-4ae4-882a-f5f1b21570a2)
-
-![8](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/b2bc4a2f-31e3-49ad-a03b-2edd4186fab7)
-
-![9](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/bc1abd48-677d-4416-b949-3ea37787d7bf)
-
-![10](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/f01a39e3-2190-4dea-9974-11bfb268eefe)
-
-
-&nbsp;
-![consultaliteraturapostgresql](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/4432d9d9-4227-4e17-b202-2b198a29d7d9)
-
-&nbsp;
-
-![BDLIBROS](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/92ae3f05-4e19-4177-8888-a17a70131b3c)
-
-&nbsp;
-
-![BDAUTORES](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/770e1719-34c0-44a9-8ae2-036a6a35429d)
-
-
-&nbsp;
-
-
-![Literatura_postman_ingles](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/7ecfd3be-a9c2-4162-8837-a732b538f4ca)
-
-&nbsp;
-![gutendexflow3](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/c8b69f59-933a-459a-afe4-bee38c48d157)
-
-
-&nbsp;
-
-![Literatura_postman_Español](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/af2e8e92-517d-4bc9-a9bd-3b020c64ce46)
-
-&nbsp;
-
-![pg1francesl](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/73fb0446-bf88-439e-acbb-7212bd580368)
-
-
 
 
 
