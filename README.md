@@ -126,12 +126,12 @@ Para integrar una base de datos a nuestro proyecto Spring, nos solicitaron agreg
 - MySQL Driver
 - Spring Data JPA
 - Flyway Migration
+&nbsp;
+#### Base de datos MySQL (Nombre de esquema utilizado en este Challenge: *forohub_alura*)
+
+*Diagrama implementado para crear base de datos:*
 
 ![BD3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/a659d376-8fa9-4b26-be3c-8a3441d26581)
-
-*Diagrama implementad para crear base de datos*
-
-Base de datos MySQL (Nombre de esquema: ***forohub_alura***)
 
 > [!NOTE]
 > Antes de pasar a la etapa de migraciones del proyecto, te sugerimos crear la base de datos y configurarla según se mencionó anteriormente. 
