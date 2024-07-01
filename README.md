@@ -71,7 +71,7 @@ En resumen, nuestro objetivo con este challenge es implementar una API REST con 
 
 &nbsp;
 
-### 1. Configurando el entorno Java  
+## 1. Configurando el entorno Java  
 
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
@@ -112,7 +112,7 @@ En esta primera fase, nos piden que se lleve a cabo la instalación y la configu
 
 &nbsp;
 
-### 2. Construcción de la base de datos
+## 2. Construcción de la base de datos
 [![Static Badge](https://img.shields.io/badge/Configuracion_del_entorno-%230067ff?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
@@ -135,7 +135,7 @@ Base de datos MySQL (nombre de esquema: forohub_)
 > [!NOTE]
 > Antes de pasar a la etapa de migraciones del proyecto, te sugerimos crear la base de datos y configurarla según se mencionó anteriormente. 
 
-#### Migración en el proyecto
+### Migración en el proyecto
 Las migraciones son comandos en lenguaje SQL para la configuración de la base de datos creada.
 
 > [!IMPORTANTE]
@@ -163,7 +163,7 @@ y observamos el contenido de la tabla:
 
 &nbsp;
 
-### 3. Registro de un nuevo tópico
+## 3. Registro de un nuevo tópico
 
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
@@ -206,13 +206,13 @@ La API no debe permitir el registro de tópicos duplicados (con el mismo título
 &nbsp;
 
 
-### 4.	Mostrar todos los tópicos
+## 4.	Mostrar todos los tópicos
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)](#)
 
-#### Listado de tópicos
+### Listado de tópicos
 La API debe contar con un punto final para el listado de todos los tópicos, y debe aceptar solicitudes del tipo GET para la URI /tópicos.
 
 Los datos de los tópicos (título, mensaje, fecha de creación, estado, autor y curso) deben ser devueltos en el cuerpo de la respuesta, en formato JSON.
@@ -241,7 +241,7 @@ Los datos de los tópicos (título, mensaje, fecha de creación, estado, autor y
 
 &nbsp;
 
-### 5. Detallando un tópico
+## 5. Detallando un tópico
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
@@ -277,7 +277,7 @@ Solicitar el campo ID para realizar la consulta es una acción obligatoria, ya q
 ```
 &nbsp;
 
-### 6. Actualizar un tópico
+## 6. Actualizar un tópico
 
 la API debe contar con un endpoint (punto final) para la actualización de los datos de un determinado tópico, y debe aceptar solicitudes del tipo PUT para la URI /tópicos/{id}.
 
@@ -311,7 +311,7 @@ Esta interfaz define métodos para convertir datos de JSON a objetos Java.
 &nbsp;
 
 
-### 7. Eliminar un tópico
+## 7. Eliminar un tópico
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
@@ -347,7 +347,7 @@ La API debe contar con un endpoint para la eliminación de un tópico específic
 &nbsp;
 
 
-### 8. Pruebas de la API
+## 8. Pruebas de la API
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/MySQL_Workbench-SQL%20Development%20Tool-blue?logo=mysql&logoColor=white)](#)
@@ -391,7 +391,7 @@ En este caso utilizamos: Insomnia: https://insomnia.rest para probar la API, com
 &nbsp;
 
 
-  ### 9. Autenticación con Spring Security
+## 9. Autenticación con Spring Security
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
@@ -402,11 +402,12 @@ Implementa un mecanismo de autenticación en la API para que los usuarios puedan
 > [!NOTE]
 > Recuerda agregar la dependencia "Spring Security" en tu archivo pom.xml (si aún no lo has hecho en la etapa de configuración del entorno Java y Spring).
 
-##### Configuración de seguridad
+### Configuración de seguridad
+
 Para configurar la autenticación en tu proyecto, es necesario definir tu clase SecurityConfigurations con información para el acceso a través de solicitudes http, utilizando anotaciones como @Configuration y @EnableWebSecurity, así como la clase spring HttpSecurity.
 
 
-***Fragmento de Codigo de la clase SecurityConfigurations***
+*Fragmento de Codigo de la clase SecurityConfigurations:*
 ```java
  // Resto del código omitido...
  /**
@@ -449,7 +450,8 @@ public class SecurityConfigurations {
 &nbsp;
 
 
-##### Autenticación en el código Java
+### Autenticación en el código Java
+
 El proceso de autenticación en la API se realiza con la implementación de un controller responsable de recibir las solicitudes de inicio de sesión. Asegúrate de utilizar las anotaciones @RestController y @RequestMapping para definir la URL del controller.
 
 Además, utilizamos una clase DTO (en el curso implementada como instancia Record en Java) para recibir los datos de inicio de sesión y contraseña, y luego autenticar al usuario en el método AuthenticationManager presente en la clase SecurityConfigurations.
@@ -458,7 +460,7 @@ Además, utilizamos una clase DTO (en el curso implementada como instancia Recor
 > [!NOTE]
 > Recuerda utilizar las anotaciones @PostMapping, @RequestBody y @Valid para recibir y validar los datos de la solicitud.  
 
-*Fragmento de codigo utilizado en la clase `CursoController.java`:*
+*Fragmento de codigo utilizado en la clase `CursoController.java:*
 ```java
  // Resto del código omitido...
 
@@ -492,7 +494,7 @@ public class CursoController {
 
  
 
-### 10. Generar y validar un token con JWT
+## 10. Generar y validar un token con JWT
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)](#)
@@ -564,13 +566,13 @@ public class TokenService {
 ```
 &nbsp;
 
-### 11. Autenticación con JWT
+## 11. Autenticación con JWT
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)](#)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
 
-#### Control de acceso
+### Control de acceso
 Después de la generación del token JWT, este debe ser utilizado para autenticar la gestión de registros de los tópicos, incluyendo acciones como creación, consulta, actualización o eliminación. La API debe ser configurada para responder con el resultado de cada solicitud, siempre y cuando el token proporcionado sea válido.
 
 Antes de configurar más detalles del control de acceso, es válido agregar una nueva solicitud con una URL y un archivo JSON que contenga el nombre de usuario y contraseña para la generación del token. "http://localhost:8080/login"?
@@ -622,14 +624,14 @@ public class AutenticacionController {
 ```
 &nbsp;
 
-### 11. **Hacer un README:** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
+## 11. **Hacer un README:** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 Uno de los pasos más importantes al participar en una selección de trabajo es resolver un desafío propuesto por la empresa con la información de la resolución, y generalmente esto debe estar en el README. ¿Y qué es el README? Es un archivo con extensión .md y es un documento con la descripción del proyecto. 
 Este mismo archivo que se esta leyendo fue el resultado del README para el Challenge.
 
 &nbsp;
-### 13.	**Implementa otras rutas en tu aplicación - (Opcional)** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
+## 13.	**Implementa otras rutas en tu aplicación - (Opcional)** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 
-#### Implementa otras rutas en tu aplicación
+### Implementa otras rutas en tu aplicación
 
 Para nuestro foro estar completo deberíamos tener otras rutas o endopints que nos permitirán crear, listar, actualizar y eliminar otras informaciones además de los tópicos como:
 
@@ -660,7 +662,7 @@ Para nuestro foro estar completo deberíamos tener otras rutas o endopints que n
     
 &nbsp;
  
-### 14. Ejecución del Proyecto
+## 14. Ejecución del Proyecto
 
 Para ejecutar el proyecto, sigue estos pasos:
 
@@ -670,7 +672,7 @@ Para ejecutar el proyecto, sigue estos pasos:
 * Corre la aplicación para interactuar con consola.
 
 
-### 14. Video Y Capturas de pantalla
+## 14. Video Y Capturas de pantalla
 
 &nbsp;
 ![gutendexgeneral](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/51186fd4-403d-466f-9baf-6c8a12ddb378)
@@ -731,7 +733,7 @@ Para ejecutar el proyecto, sigue estos pasos:
 
 
 
-### Glossary [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
+## Glossary [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
 
 - **DTO (Data Transfer Object)**: Objetos utilizados para transferir datos entre el backend y el frontend.
 - **JPA (Java Persistence API)**: API estándar de Java para mapear objetos a una base de datos relacional.
@@ -753,7 +755,7 @@ Para ejecutar el proyecto, sigue estos pasos:
 - **Diagrama de Estructura del Proyecto**: Representación visual de la estructura del proyecto, que muestra cómo se relacionan los diferentes componentes y cómo fluye la información a través de ellos. Ayuda a comprender la arquitectura y el diseño del proyecto.
 
 
-### MIT License
+## MIT License
 
 ```sql
 
@@ -802,7 +804,5 @@ FUERA O EN RELACIÓN CON EL SOFTWARE O EL USO U OTROS TRATOS EN EL
 SOFTWARE.
 
 ```
-### Insignia Exclusiva para este Challenge - Entregado
-
-![badge literalura](https://github.com/nandojmj/Alura_Challenge_Literatura/assets/156966097/a1cc98e3-3046-4996-b631-d6b76477a898)
+## Insignia Exclusiva para este Challenge - Entregado
 
