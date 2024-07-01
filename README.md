@@ -639,7 +639,31 @@ Para nuestro foro estar completo deberíamos tener otras rutas o endopints que n
  [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 
   Ahora es el momento de documentar tu API con Spring Swagger. Swagger es una herramienta extremadamente ventajosa para tu API, ya que ofrece una interfaz amigable y accesible, así como una forma de documentación automática generada simultáneamente con el desarrollo de la API.
-  
+
+ ![swagger_login](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/b7f3fffa-e829-4ca2-927d-d164132a84a1)
+
+ ![swagger_login2](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/4b49472b-faaa-4286-b938-8292bf43ed72)
+
+![swagger_login3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/7527cbf0-e147-4906-8717-042ecce35d4b)
+
+![swagger_login4](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/1bdfcc17-4280-42dd-8f7d-eb9004f4ea28)
+
+
+![swagger_cursos](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/3cb64e34-7b50-4e06-8eee-79c604381bf5)
+
+![swagger_topicos](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/6bc6380c-b1df-454f-a26b-8cd54eddc351)
+
+![swagger_topicosid](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/432b19ea-b4f7-44f3-9fd9-deab10dc3ada)
+
+![swagger_topicosestado1](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/17c26356-619e-4e44-9527-79c017ff6ff7)
+
+![swagger_topicosestado2](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/e78653ab-ef87-4309-aba4-0e9a279de89c)
+
+![swagger_respuestas](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/29089e15-b16e-416e-bc52-1e33be9eac81)
+
+![swagger_admin](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/b12f1da5-1195-43ba-bc65-307f251b1e91)
+
+
 
     
 &nbsp;
@@ -654,7 +678,7 @@ Para ejecutar el proyecto, sigue estos pasos:
 * Corre la aplicación para interactuar con consola.
 
 
-## 14. Video Y Capturas de pantalla
+## 14. Video Y Capturas de pantalla  [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
 
 
 
@@ -730,4 +754,6 @@ SOFTWARE.
 
 ```
 ## Insignia Exclusiva para este Challenge - Entregado
+
+
 
