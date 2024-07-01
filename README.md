@@ -58,8 +58,10 @@ Es lo que normalmente conocemos como ***CRUD (CREATE, READ, UPDATE, DELETE)**.
 11.	Autenticación con JWT
 12. Hacer un Readme.md
 13. Extra (Opcional)
-- 13.1 Implementa otras rutas en tu aplicación - (Opcional)
-- 13.2 Documentación con Swagger - (Opcional)
+
+      13.1 Implementa otras rutas en tu aplicación - (Opcional)
+   
+      13.2 Documentación con Swagger - (Opcional)
      
 &nbsp;
 
