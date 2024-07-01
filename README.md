@@ -648,7 +648,12 @@ Se nos solicito documentar nuestra  API con Spring Swagger. Swagger es una herra
 http://localhost:8080/swagger-ui/index.html
 ```
 
+Accediendo a la interfaz gráfica - Swagger UI
+Una vez realizada la configuración, ya podremos acceder a la interfaz gráfica de Swagger desde la dirección /swagger. El resultado inicial (sin documentación) sería el siguiente:
+
  ![swagger_login](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/b7f3fffa-e829-4ca2-927d-d164132a84a1)
+
+ Además, se ha incluido un botón [ Authorize ] en la interfaz, que nos permitirá añadir un Token JWT a la cabecera de las peticiones HTTP que realicemos hacia los Controladores de Web API
 
  ![swagger_login2](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/4b49472b-faaa-4286-b938-8292bf43ed72)
 
