@@ -23,7 +23,7 @@ Este es un Challenge de la Especialización __Back-End G6 Alura - Oracle Next Ed
 
 <p>El Challenge consiste en un foro, el cual es un espacio donde todos los participantes de una plataforma pueden plantear sus preguntas sobre determinados tópicos. 
  
-Este desafío, llamado ForoHub: vamos a replicar este proceso a nivel de back end y, para eso, crearemos una API REST usando Spring.
+Este desafío, llamado ForoHub: vamos a replicar este proceso a nivel de back end y, para eso, crearemos una **API REST** usando Spring.
 
 Nuestra API se centrará específicamente en los tópicos, y debe permitir a los usuarios:
 
@@ -33,10 +33,9 @@ Nuestra API se centrará específicamente en los tópicos, y debe permitir a los
 - Actualizar un tópico;
 - Eliminar un tópico.
 
-Es lo que normalmente conocemos como ***CRUD (CREATE, READ, UPDATE, DELETE)** y es muy similar a lo que desarrollamos en LiterAlura, pero ahora de forma completa, 
-agregando las operaciones de UPDATE y DELETE, y usando un framework que facilitará mucho nuestro trabajo.
+Es lo que normalmente conocemos como ***CRUD (CREATE, READ, UPDATE, DELETE)**.
 
-En resumen, nuestro objetivo con este challenge es implementar una API REST con las siguientes funcionalidades:
+***En resumen, nuestro objetivo con este challenge es implementar una API REST con las siguientes funcionalidades:***
 
 - API con rutas implementadas siguiendo las mejores prácticas del modelo REST;
 - Validaciones realizadas según las reglas de negocio;
@@ -44,7 +43,7 @@ En resumen, nuestro objetivo con este challenge es implementar una API REST con 
 - Servicio de autenticación/autorización para restringir el acceso a la información.
 
 &nbsp;
-**Los pasos solicitados para completar este desafío:**
+### **Los pasos solicitados para completar este challenge fueron los siguientes:**
 
 1.  Configurando el entorno Java y Spring
 2.	Construcción de la base de datos
@@ -61,7 +60,6 @@ En resumen, nuestro objetivo con este challenge es implementar una API REST con 
 13. Extra (Opcional)
 - 13.1 Implementa otras rutas en tu aplicación - (Opcional)
 - 13.2 Documentación con Swagger - (Opcional)
-
      
 &nbsp;
 
@@ -83,7 +81,7 @@ En resumen, nuestro objetivo con este challenge es implementar una API REST con 
 [![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)](#)
 [![Static Badge](https://img.shields.io/badge/app-Trello-%231466c3?style=flat&logo=trello)](https://trello.com/)
 
-En esta primera fase, nos piden que se lleve a cabo la instalación y la configuración del entorno de desarrollo Java. Antes de comenzar, asegúrese de tener instalado lo siguiente:
+En esta primera fase, nos piden que se lleve a cabo la instalación y la configuración del entorno de desarrollo Java. Antes de comenzar, asegúrese de tener instalado o contar con herramientas como:
 
 - Trello
 - Git y GitHub 
@@ -92,7 +90,7 @@ En esta primera fase, nos piden que se lleve a cabo la instalación y la configu
 - Spring Initializr  - [https://start.spring.io/](https://start.spring.io/)
 - MySQL relational database management system (RDBMS)
 - MySQL Workbench: SQL Development
-- Insomnia
+- Insomnia o Postman
 
 **Dependencias para agregar al crear el proyecto en Spring Initializr:**
 
@@ -126,6 +124,7 @@ Para integrar una base de datos a nuestro proyecto Spring, nos solicitaron agreg
 - MySQL Driver
 - Spring Data JPA
 - Flyway Migration
+  
 &nbsp;
 #### Base de datos MySQL (Nombre de esquema utilizado en este Challenge: *forohub_alura*)
 
@@ -148,13 +147,13 @@ Las migraciones son comandos en lenguaje SQL para la configuración de la base d
 
 ```java
 V1__create-table-usuarios.sql
-V2__create-table-.........sql
-V3__create-table-.........sql
-.
+V2__create-table-cursos.sql
+V3__create-table-topicos.sql
+V3__create-table-********.sql
 .
 .
 ```
-Tabla creadas en la base de datos, con registro de verciones Flyway Migration
+Tabla creadas en la base de datos, con registro de versiones Flyway Migration
 ```java
 forohub_alura.flyway_schema_history
 ```
@@ -219,7 +218,7 @@ La API debe contar con un punto final para el listado de todos los tópicos, y d
 Los datos de los tópicos (título, mensaje, fecha de creación, estado, autor y curso) deben ser devueltos en el cuerpo de la respuesta, en formato JSON.
 
 > [!IMPORTANT]
-> → Recordando que al tratar con el CRUD es necesario trabajar con JpaRepository asociado al tópico, especialmente en la lista de datos de la base de datos utilizamos el método findAll.  
+> → Recordando que al tratar con el CRUD es necesario trabajar con JpaRepository asociado al tópico, especialmente en la lista de datos de la base de datos utilizamos el método `findAll`.  
 
 *Fragmento de código de la Class "TopicoController.java":*
 ```java
@@ -357,7 +356,7 @@ La API debe contar con un endpoint para la eliminación de un tópico específic
 
 Las pruebas de las funcionalidades de la API pueden realizarse utilizando alguna herramienta de pruebas de API, como Postman o Insomnia.
 
-En este caso utilizamos: Insomnia: https://insomnia.rest para probar la API, como por ejemplo:
+En este caso utilizamos: Insomnia: `https://insomnia.rest` para probar la API, como por ejemplo:
 
 
 ***Obtener Usuarios registrados en la base de datos:***
@@ -401,11 +400,11 @@ En este caso utilizamos: Insomnia: https://insomnia.rest para probar la API, com
 Implementa un mecanismo de autenticación en la API para que los usuarios puedan autenticarse y enviar solicitudes a ella. A partir de ahora, solo los usuarios autenticados pueden interactuar con la API.
 
 > [!NOTE]
-> Recuerda agregar la dependencia "Spring Security" en tu archivo pom.xml (si aún no lo has hecho en la etapa de configuración del entorno Java y Spring).
+> Recuerda agregar la dependencia `Spring Security` en tu archivo pom.xml (si aún no lo has hecho en la etapa de configuración del entorno Java y Spring).
 
 ### Configuración de seguridad
 
-Para configurar la autenticación en tu proyecto, es necesario definir tu clase SecurityConfigurations con información para el acceso a través de solicitudes http, utilizando anotaciones como @Configuration y @EnableWebSecurity, así como la clase spring HttpSecurity.
+Para configurar la autenticación en tu proyecto, es necesario definir tu clase SecurityConfigurations con información para el acceso a través de solicitudes http, utilizando anotaciones como `@Configuration` y `@EnableWebSecurity`, así como la clase spring `HttpSecurity`.
 
 
 *Fragmento de Codigo de la clase SecurityConfigurations:*
@@ -453,9 +452,9 @@ public class SecurityConfigurations {
 
 ### Autenticación en el código Java
 
-El proceso de autenticación en la API se realiza con la implementación de un controller responsable de recibir las solicitudes de inicio de sesión. Asegúrate de utilizar las anotaciones @RestController y @RequestMapping para definir la URL del controller.
+El proceso de autenticación en la API se realiza con la implementación de un controller responsable de recibir las solicitudes de inicio de sesión. Asegúrate de utilizar las anotaciones `@RestController` y `@RequestMapping` para definir la URL del controller.
 
-Además, utilizamos una clase DTO (en el curso implementada como instancia Record en Java) para recibir los datos de inicio de sesión y contraseña, y luego autenticar al usuario en el método AuthenticationManager presente en la clase SecurityConfigurations.
+Además, utilizamos una clase DTO (en el curso implementada como instancia Record en Java) para recibir los datos de inicio de sesión y contraseña, y luego autenticar al usuario en el método `AuthenticationManager` presente en la clase SecurityConfigurations.
 
 
 > [!NOTE]
@@ -487,6 +486,17 @@ public class CursoController {
         // Construye la URL de la ubicación del nuevo curso registrado
         URI url = uriComponentsBuilder.path("/cursos/{id}").buildAndExpand(curso.getId()).toUri();
 
+ // Resto del código omitido...
+
+```
+
+*Fragmento de codigo utilizado en la clase `AuthenticationManager.java:*
+```java
+ // Resto del código omitido...
+  @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
  // Resto del código omitido...
 
 ```
