@@ -19,30 +19,22 @@
 [![Endpoint Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2Fnandojmj%2FAlura_Challenge_API_REST_Foro_hub.json&style=flat&logo=github&color=brightgreen)](#)
 
 
-Este es un desafío de la Especialización __Back-End G6 Alura - Oracle Next Education.__ El proyecto se llama "API REST Foro Hub"
+Este es un Challenge de la Especialización __Back-End G6 Alura - Oracle Next Education.__ 
 
-<p>Un foro es un espacio donde todos los participantes de una plataforma pueden plantear sus preguntas sobre determinados tópicos. 
-  Aquí en Alura Latam, los estudiantes utilizan el foro para sacar sus dudas sobre los cursos y proyectos en los que participan. 
-  Este lugar mágico está lleno de mucho aprendizaje y colaboración entre estudiantes, profesores y moderadores.
-</p>
-<p>
-  Ya sabemos para qué sirve el foro y conocemos su aspecto, ¿pero sabemos cómo funciona detrás de escena? Es decir, ¿dónde se almacenan las informaciones? 
-¿Cómo se tratan los datos para relacionar un tópico con una respuesta, o cómo se relacionan los usuarios con las respuestas de un tópico?
+<p>El Challenge consiste en un foro, el cual es un espacio donde todos los participantes de una plataforma pueden plantear sus preguntas sobre determinados tópicos. 
+ 
+Este desafío, llamado ForoHub: vamos a replicar este proceso a nivel de back end y, para eso, crearemos una API REST usando Spring.
 
-Este es nuestro desafío, llamado ForoHub: en él, vamos a replicar este proceso a nivel de back end y, para eso, crearemos una API REST usando Spring.
 Nuestra API se centrará específicamente en los tópicos, y debe permitir a los usuarios:
 
 - Crear un nuevo tópico;
 - Mostrar todos los tópicos creados;
-- Mostrar un tópico específico;
 - Mostrar un tópico específico;
 - Actualizar un tópico;
 - Eliminar un tópico.
 
 Es lo que normalmente conocemos como ***CRUD (CREATE, READ, UPDATE, DELETE)** y es muy similar a lo que desarrollamos en LiterAlura, pero ahora de forma completa, 
 agregando las operaciones de UPDATE y DELETE, y usando un framework que facilitará mucho nuestro trabajo.
-
-***Traducción libre (en orden): Crear, Consultar, Actualizar y Eliminar.**
 
 En resumen, nuestro objetivo con este challenge es implementar una API REST con las siguientes funcionalidades:
 
@@ -91,7 +83,7 @@ En resumen, nuestro objetivo con este challenge es implementar una API REST con 
 [![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)](#)
 [![Static Badge](https://img.shields.io/badge/app-Trello-%231466c3?style=flat&logo=trello)](https://trello.com/)
 
-En esta primera fase, nos piden que se lleve a cabo la instalación y la configuración del entorno de desarrollo Java para nuestro desafío de construcción en un proyecto Spring. Asegúrate de contar con los siguientes programas, archivos y versiones:
+En esta primera fase, nos piden que se lleve a cabo la instalación y la configuración del entorno de desarrollo Java. Antes de comenzar, asegúrese de tener instalado lo siguiente:
 
 - Trello
 - Git y GitHub 
@@ -102,7 +94,7 @@ En esta primera fase, nos piden que se lleve a cabo la instalación y la configu
 - MySQL Workbench: SQL Development
 - Insomnia
 
-**Dependencias para regar al crear el proyecto en Spring Initializr:**
+**Dependencias para agregar al crear el proyecto en Spring Initializr:**
 
 - Spring Data JPA
 - Lombok
@@ -128,16 +120,17 @@ En esta primera fase, nos piden que se lleve a cabo la instalación y la configu
 [![Static Badge](https://img.shields.io/badge/Flyway-Database%20Migrations-%23CC0200?logo=Flyway&logoColor=%23CC0200)](#)
 
 
-Para integrar una base de datos a nuestro proyecto Spring, nos solicitaron agregar algunas dependencias en nuestro pom.xml (en caso de que aún no las hayas agregado al configurar el entorno Java y Spring):
+Para integrar una base de datos a nuestro proyecto Spring, nos solicitaron agregar algunas dependencias en nuestro pom.xml :
 
 - Validation
 - MySQL Driver
 - Spring Data JPA
 - Flyway Migration
 
-Además, también es importante recordar la configuración necesaria en nuestro application.properties con los datos de url, nombre de usuario y contraseña de nuestra base de datos, lo que implica definir el driver de la base de datos, así como los datos de inicio de sesión con usuario y contraseña.
-
 [![BD3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/a659d376-8fa9-4b26-be3c-8a3441d26581)](#)
+*Diagrama implementad para crear base de datos*
+
+Base de datos MySQL (nombre de esquema: forohub_)
 
 > [!NOTE]
 > Antes de pasar a la etapa de migraciones del proyecto, te sugerimos crear la base de datos y configurarla según se mencionó anteriormente. 
@@ -145,16 +138,11 @@ Además, también es importante recordar la configuración necesaria en nuestro 
 #### Migración en el proyecto
 Las migraciones son comandos en lenguaje SQL para la configuración de la base de datos creada.
 
-Es necesario definir las migraciones, por ejemplo, para la construcción de las tablas de tu proyecto en archivos con extensión .sql. Además, es importante reforzar el uso de las anotaciones @‌PostMapping y @‌Transactional en tu clase controladora para realizar la persistencia de los datos.
-
 > [!IMPORTANTE]
 > Recuerda siempre pausar/detener la ejecución del proyecto Spring para crear/cambiar las migraciones.
 
  
 [![MIGRATION3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/280ed66a-c136-47ab-a11d-1e6a364fbe2a)](#)
-
-
-
 *Formato para crear archivo sql para Flyway Migration:*
 
 ```java
@@ -173,7 +161,6 @@ y observamos el contenido de la tabla:
 
 [![MIGRATION4](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/f03e1a73-6c21-4b17-86a7-2bef94716d0d)](#)
 
-
 &nbsp;
 
 ### 3. Registro de un nuevo tópico
@@ -184,13 +171,11 @@ y observamos el contenido de la tabla:
 [![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)](#)
 
 
-
 La API debe contar con un `endpoint` (punto final) para el registro de tópicos, y debe aceptar solicitudes del tipo POST para la URI /tópicos.
 Los datos del tópico (título, mensaje, autor y curso) deben ser enviados en el cuerpo de la solicitud, en formato JSON.
 
 > [!NOTE]
 >  No olvides utilizar la anotación `@RequestBody` para que tu proyecto Spring reciba correctamente los datos del cuerpo de la solicitud.
-> Además, recuerda que el tópico debe ser guardado en la base de datos construida para el proyecto, así que aquí tienes el recordatorio de utilizar el método save del JpaRepository para realizar la persistencia de los datos del tópico creado.
 
 **Sugerencia:** para ayudar en la validación de los datos, intenta utilizar la anotación Java integrada en Spring `@Valid.`
 
@@ -264,10 +249,7 @@ Los datos de los tópicos (título, mensaje, fecha de creación, estado, autor y
 [![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-blue?style=flat&logo=json)]](#)
 
 
-### 6. Detalle de tópicos
 La API debe contar con un endpoint (punto final) para el listado de todos los tópicos, y debe aceptar solicitudes del tipo GET para la URI /tópicos/{id}.
-
-Los datos de los tópicos (título, mensaje, fecha de creación, estado, autor y curso) deben ser devueltos en el cuerpo de la respuesta, en formato JSON.
 
 > Before you begin, ensure Recuerda utilizar la anotación `@‌PathVariable` en tu código para recibir el campo de ID de la solicitud GET.
 
@@ -295,15 +277,11 @@ Solicitar el campo ID para realizar la consulta es una acción obligatoria, ya q
 ```
 &nbsp;
 
-### 7. Actualizar un tópico
-#### Actualización de tópico
+### 6. Actualizar un tópico
+
 la API debe contar con un endpoint (punto final) para la actualización de los datos de un determinado tópico, y debe aceptar solicitudes del tipo PUT para la URI /tópicos/{id}.
 
-**Observación:** las mismas reglas de negocio del registro de un tópico deben aplicarse también en su actualización.
-
 Dado que estamos realizando una consulta en la base de datos para luego actualizar un tópico, es necesario solicitar y verificar el campo ID de su solicitud.
-
-En el código del proyecto, sugerimos, al igual que en la tarjeta de Detalle de Tópicos, el uso de la anotación `@PathVariable` para obtener el ID de la solicitud `PUT`.
 
 → Recuerda verificar si el tópico existe en la base de datos para realizar su actualización. En este caso, sugerimos utilizar el método `isPresent()` de la clase Java llamada Optional.
 Esta interfaz define métodos para convertir datos de JSON a objetos Java.
@@ -333,7 +311,7 @@ Esta interfaz define métodos para convertir datos de JSON a objetos Java.
 &nbsp;
 
 
-### 8. Eliminar un tópico
+### 7. Eliminar un tópico
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
@@ -341,10 +319,6 @@ Esta interfaz define métodos para convertir datos de JSON a objetos Java.
 
 
 La API debe contar con un endpoint para la eliminación de un tópico específico, el cual debe aceptar solicitudes del tipo `DELETE` para la URI `/tópicos/{id}`.
-
-Dado que estamos realizando una consulta en la base de datos para luego actualizar un tópico, es necesario solicitar y verificar el campo ID de su solicitud.
-
-En el código del proyecto, sugerimos, al igual que en la tarjeta de Detalle de Tópicos, el uso de la anotación `@PathVariable` para obtener el ID de la solicitud PUT.
 
 → Recuerda verificar si el tópico existe en la base de datos antes de realizar su actualización. En este caso, sugerimos el uso del método `isPresent()` de la clase Java llamada Optional.
 
@@ -373,7 +347,7 @@ En el código del proyecto, sugerimos, al igual que en la tarjeta de Detalle de 
 &nbsp;
 
 
-### 9. Pruebas de la API
+### 8. Pruebas de la API
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/MySQL_Workbench-SQL%20Development%20Tool-blue?logo=mysql&logoColor=white)](#)
@@ -417,21 +391,16 @@ En este caso utilizamos: Insomnia: https://insomnia.rest para probar la API, com
 &nbsp;
 
 
-  ### 10. Autenticación con Spring Security
+  ### 9. Autenticación con Spring Security
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)](#)
 
-
-#### Autenticación
-A partir de ahora, solo los usuarios autenticados pueden interactuar con la API.
-
-Implementa un mecanismo de autenticación en la API para que los usuarios puedan autenticarse y enviar solicitudes a ella.
+Implementa un mecanismo de autenticación en la API para que los usuarios puedan autenticarse y enviar solicitudes a ella. A partir de ahora, solo los usuarios autenticados pueden interactuar con la API.
 
 > [!NOTE]
 > Recuerda agregar la dependencia "Spring Security" en tu archivo pom.xml (si aún no lo has hecho en la etapa de configuración del entorno Java y Spring).
-
 
 ##### Configuración de seguridad
 Para configurar la autenticación en tu proyecto, es necesario definir tu clase SecurityConfigurations con información para el acceso a través de solicitudes http, utilizando anotaciones como @Configuration y @EnableWebSecurity, así como la clase spring HttpSecurity.
@@ -523,13 +492,12 @@ public class CursoController {
 
  
 
-### 11. Generar un token con JWT
+### 10. Generar y validar un token con JWT
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)](#)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
 
-#### Token JWT
 Para agregar mayor seguridad a tu aplicación, una opción muy ventajosa es requerir tokens para autenticación. El JWT (JSON Web Token) es un estándar utilizado para compartir información entre cliente y servidor que será muy útil en esta tarea.
 
 > [!NOTE]
@@ -537,15 +505,11 @@ Para agregar mayor seguridad a tu aplicación, una opción muy ventajosa es requ
 
 Esta biblioteca es importante precisamente para poder generar el token en el estándar JWT y así agregarlo en la configuración de seguridad de nuestro proyecto, creando una clase DTO UsernamePasswordAuthenticationToken para recibir el nombre de usuario y contraseña.
 
-
 &nbsp;
 
-#### Generar y validar token
 Además, es necesaria la construcción de una clase de servicio, TokenService, para aislar la generación y validación del token.
 
 En la clase, se ha implementado el método "generarToken()", utilizando la biblioteca JWT para crear un token con el algoritmo HMAC256 y una contraseña. También se ha añadido la funcionalidad de configurar la fecha de expiración del token.
-
-Dentro de esta clase, se debe implementar el método "generarToken()" que utiliza la biblioteca JWT para generar el token con el algoritmo HMAC256 y una contraseña secreta. Además, también es importante definir la fecha de expiración del token.
 
 Por último, es necesario inyectar esta clase en tu controlador de autenticación, y así obtener el token retornado en la respuesta de la solicitud de inicio de sesión.
 
@@ -598,11 +562,67 @@ public class TokenService {
  // Resto del código omitido...
 
 ```
-
-
 &nbsp;
 
-### 12. **Hacer un README:** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
+### 11. Autenticación con JWT
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Insomnia-REST%20Client-%234000BF?logo=Insomnia&logoColor=%234000BF)](#)
+[![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
+
+#### Control de acceso
+Después de la generación del token JWT, este debe ser utilizado para autenticar la gestión de registros de los tópicos, incluyendo acciones como creación, consulta, actualización o eliminación. La API debe ser configurada para responder con el resultado de cada solicitud, siempre y cuando el token proporcionado sea válido.
+
+Antes de configurar más detalles del control de acceso, es válido agregar una nueva solicitud con una URL y un archivo JSON que contenga el nombre de usuario y contraseña para la generación del token. "http://localhost:8080/login"?
+
+En principio, debemos mapear las URLs y validar los tokens en nuestro controlador. Recomendamos crear una clase separada para validar los tokens y llamarla antes de las solicitudes en el controlador para evitar la repetición de código.
+
+> [!NOTE]
+> Destacamos la importancia de almacenar y enviar el token junto con las próximas solicitudes.
+> Reforzamos la necesidad de crear un filter o interceptor en el proyecto para validar el token en cada solicitud.
+
+*Fragmento de codigo utilizado en la clase `AutenticacionService`:*
+```java
+ // Resto del código omitido...
+  @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return usuarioRepository.findByEmail(username);
+    }
+  public DatosRespuestaUsuario autenticarUsuario(DatosAutenticacionUsuario datosAutenticacion) {
+        // Validar los datos de autenticación
+        validadores.forEach(v-> v.validar(datosAutenticacion));
+        // Buscar y devolver los datos del usuario autenticado
+        return new DatosRespuestaUsuario((Usuario) usuarioRepository.findByEmail(datosAutenticacion.email()));
+    }
+
+ // Resto del código omitido...
+```
+&nbsp;
+
+*Fragmento de codigo utilizado en la clase `AutenticacionController`:*
+```java
+ // Resto del código omitido...
+@RestController
+@RequestMapping("/login")
+@Tag(name = "Autenticación - Login", description = "Gestionar la creación y verificación de tokens JWTO para el login de usuario")
+public class AutenticacionController {
+
+    @Autowired
+    private AuthenticationManager authenticationManager;  // Gestor de autenticación de Spring Security
+
+    @Autowired
+    private TokenService tokenService;  // Servicio para la generación y validación de tokens JWT
+
+    @Autowired
+    private AutenticacionService autenticacionService;  // Servicio de autenticación personalizado
+
+
+
+ // Resto del código omitido...
+```
+&nbsp;
+
+### 11. **Hacer un README:** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 Uno de los pasos más importantes al participar en una selección de trabajo es resolver un desafío propuesto por la empresa con la información de la resolución, y generalmente esto debe estar en el README. ¿Y qué es el README? Es un archivo con extensión .md y es un documento con la descripción del proyecto. 
 Este mismo archivo que se esta leyendo fue el resultado del README para el Challenge.
 
