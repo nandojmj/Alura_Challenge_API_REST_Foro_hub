@@ -755,5 +755,6 @@ SOFTWARE.
 ```
 ## Insignia Exclusiva para este Challenge - Entregado
 
+![Badge-Spring](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/6ce0ba25-323f-4a30-a4a1-eee0791d1ad0)
 
 
