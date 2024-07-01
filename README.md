@@ -179,10 +179,6 @@ Los datos del tópico (título, mensaje, autor y curso) deben ser enviados en el
 
 **Sugerencia:** para ayudar en la validación de los datos, intenta utilizar la anotación Java integrada en Spring `@Valid.`
 
-#### Reglas de negocio
-Todos los campos son obligatorios, por lo tanto, es necesario verificar si todos los campos se están ingresando correctamente.
-La API no debe permitir el registro de tópicos duplicados (con el mismo título y mensaje).
-
 &nbsp;
 
 *Fragmento de código de la Class "TopicoController":*
@@ -283,9 +279,6 @@ la API debe contar con un endpoint (punto final) para la actualización de los d
 
 Dado que estamos realizando una consulta en la base de datos para luego actualizar un tópico, es necesario solicitar y verificar el campo ID de su solicitud.
 
-→ Recuerda verificar si el tópico existe en la base de datos para realizar su actualización. En este caso, sugerimos utilizar el método `isPresent()` de la clase Java llamada Optional.
-Esta interfaz define métodos para convertir datos de JSON a objetos Java.
-
 *Fragmento de código de la Class "TopicoController.java":*
 ```java
 /**
@@ -326,21 +319,20 @@ La API debe contar con un endpoint para la eliminación de un tópico específic
 
 ```java
  // Resto del código omitido...
-  /**
-     * Elimina un tópico por su ID en la base de datos.
-     *
-     * @param id El ID del tópico a eliminar.
-     * @return ResponseEntity indicando el éxito de la operación.
-     */
-    @DeleteMapping("/{id}")
+
+  @DeleteMapping("/eliminar/{id}")
     @Transactional
-    @Operation(summary = "Cierra un tópico por ID en la base de datos (Elimina lógicamente). Solo perfil ADMIN",
-            description = "Para esta solicitud el usuario debe tener derechos de administrador (PERFIL ADMIN)")
-    public ResponseEntity<Void> eliminar(
-            @PathVariable Long id) {
-        Topico topico = topicoRepository.getReferenceById(id);
-        topico.cerrarTopico(); // Cambia el estado del tópico a cerrado
+    @Operation(summary = "Elimina un tópico por ID en la base de datos. Solo perfil ADMIN",
+              description = "Para esta solicitud el usuario debe tener derechos de administrador (PERFIL ADMIN)")
+    public ResponseEntity eliminarTopico(@PathVariable Long id) {
+        Optional<Topico> topicoOptional = topicoRepository.findById(id);
+        if (topicoOptional.isPresent()) {
+            Topico topico = topicoOptional.get();
+            topicoRepository.deleteById(topico.getId());
+            return ResponseEntity.ok().body("El topico se eliminó exitosamente");
+        }
         return ResponseEntity.noContent().build();
+        // RETORNA 204  No Content
     }
  // Resto del código omitido...
 ```
