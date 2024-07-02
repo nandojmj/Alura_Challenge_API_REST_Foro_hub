@@ -616,14 +616,12 @@ public class AutenticacionController {
 ```
 &nbsp;
 
-## 11. **Hacer un README:** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
+## 12. **Hacer un README:** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 Uno de los pasos más importantes al participar en una selección de trabajo es resolver un desafío propuesto por la empresa con la información de la resolución, y generalmente esto debe estar en el README. ¿Y qué es el README? Es un archivo con extensión .md y es un documento con la descripción del proyecto. 
 Este mismo archivo que se esta leyendo fue el resultado del README para el Challenge.
 
 &nbsp;
 ## 13.	**Implementa otras rutas en tu aplicación - (Opcional)** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
-
-### Implementa otras rutas en tu aplicación
 
 Para nuestro foro estar completo deberíamos tener otras rutas o endopints que nos permitirán crear, listar, actualizar y eliminar otras informaciones además de los tópicos como:
 
@@ -631,49 +629,61 @@ Para nuestro foro estar completo deberíamos tener otras rutas o endopints que n
 - /respuestas
 &nbsp;
 
-### 14. Documentación con Swagger - (Opcional) ![Static Badge](https://img.shields.io/badge/Swagger-valid%2F3.0-green?logo=swagger)
+## 14. Documentación con Swagger - (Opcional) ![Static Badge](https://img.shields.io/badge/Swagger-valid%2F3.0-green?logo=swagger)
  [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 
 Se nos solicito documentar nuestra  API con Spring Swagger. Swagger es una herramienta extremadamente ventajosa para tu API, ya que ofrece una interfaz amigable y accesible, así como una forma de documentación automática generada simultáneamente con el desarrollo de la API. Es una herramienta basada en el estándar OpenAPI que nos permite documentar y probar nuestros Web APIs,
 
-```
-http://localhost:8080/swagger-ui/index.html
-```
+### Accediendo a la interfaz gráfica - Swagger UI
 
-Accediendo a la interfaz gráfica - Swagger UI
-Una vez realizada la configuración, ya podremos acceder a la interfaz gráfica de Swagger desde la dirección /swagger. El resultado inicial (sin documentación) sería el siguiente:
+Una vez realizada la configuración, ya podremos acceder a la interfaz gráfica de Swagger desde la dirección ```http://localhost:8080/swagger-ui/index.html```. El resultado sería el siguiente:
 
  ![swagger_login](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/b7f3fffa-e829-4ca2-927d-d164132a84a1)
 
- Además, se ha incluido un botón [ Authorize ] en la interfaz, que nos permitirá añadir un Token JWT a la cabecera de las peticiones HTTP que realicemos hacia los Controladores de Web API
+Ingresando a Autenticacion- Login de la interface realizamos el login con datos email y contraseña del usuario registrado. Realizamos un clic en Execute:
 
  ![swagger_login2](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/4b49472b-faaa-4286-b938-8292bf43ed72)
 
+Como resultado obtenemos un estado Code 200, si el login es valido. En el body se encuentra el token generado: 
+
 ![swagger_login3](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/7527cbf0-e147-4906-8717-042ecce35d4b)
+
+Se ha incluido un botón [ Authorize ] en la interfaz, que nos permitirá añadir un Token JWT a la cabecera de las peticiones HTTP que realicemos hacia los Controladores de Web API. Copiamos el token generado y lo pegamos dentro de Autorize , en el campo value y clickeamos Authorize:
 
 ![swagger_login4](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/1bdfcc17-4280-42dd-8f7d-eb9004f4ea28)
 
+`CursoController` en la interfaz:
 
 ![swagger_cursos](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/3cb64e34-7b50-4e06-8eee-79c604381bf5)
 
+`TopicoController` en la interfaz:
+
 ![swagger_topicos](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/6bc6380c-b1df-454f-a26b-8cd54eddc351)
+
+Consultar un Topico por ID:
 
 ![swagger_topicosid](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/432b19ea-b4f7-44f3-9fd9-deab10dc3ada)
 
+Consultar un Topico por estado de respuesta:
+
 ![swagger_topicosestado1](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/17c26356-619e-4e44-9527-79c017ff6ff7)
+
+Listado de consultar un Topico por estado de respuesta:
 
 ![swagger_topicosestado2](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/e78653ab-ef87-4309-aba4-0e9a279de89c)
 
+`respuestaController` en la interfaz:
+
 ![swagger_respuestas](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/29089e15-b16e-416e-bc52-1e33be9eac81)
 
+`AdminController` en la interfaz:
+
 ![swagger_admin](https://github.com/nandojmj/Alura_Challenge_API_REST_Foro_hub/assets/156966097/b12f1da5-1195-43ba-bc65-307f251b1e91)
-
-
 
     
 &nbsp;
  
-## 14. Ejecución del Proyecto
+## 15. Ejecución del Proyecto
 
 Para ejecutar el proyecto, sigue estos pasos:
 
@@ -683,7 +693,7 @@ Para ejecutar el proyecto, sigue estos pasos:
 * Corre la aplicación para interactuar con la base de datos y alguna herramienta de pruebas de API, como Postman o Insomnia.
 
 
-## 14. Video Y Capturas de pantalla  [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
+## 16. Video Y Capturas de pantalla  [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
 
 
 
