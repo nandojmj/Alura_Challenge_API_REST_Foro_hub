@@ -420,7 +420,8 @@ public class SecurityConfigurations {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(csrf -> csrf.disable()) // Desactiva la protección CSRF para APIs RESTful
-                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configura la política de sesión como stateless
+                 // Configura la política de sesión como stateless
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) 
                 .authorizeHttpRequests(auth -> auth
                         // Permitir todas las solicitudes POST al endpoint /login
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
