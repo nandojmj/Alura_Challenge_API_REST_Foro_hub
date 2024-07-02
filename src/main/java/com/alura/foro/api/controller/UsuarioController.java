@@ -38,22 +38,22 @@ public class UsuarioController {
      * @param uri           Builder para construir la URI de respuesta.
      * @return Respuesta con los datos del usuario registrado y la URL de ubicación.
      */
-//    @PostMapping("/register")
-//    @Transactional
-//    @Operation(summary = "Registra un usuario en la base de datos")
-//    public ResponseEntity<DatosRespuestaUsuario> registrar(
-//            @RequestBody @Valid DatosRegistroUsuario datosRegistro,
-//            UriComponentsBuilder uri) {
-//
-//        // Llama al servicio para crear un usuario y obtener los datos de respuesta
-//        DatosRespuestaUsuario datosRespuesta = usuarioService.crearUsuario(datosRegistro);
-//
-//        // Construye la URL de la ubicación del nuevo usuario registrado
-//        URI url = uri.path("/admin/{id}").buildAndExpand(datosRespuesta.id()).toUri();
-//
-//        // Devuelve una respuesta con código 201 Created y los datos del usuario registrado
-//        return ResponseEntity.created(url).body(datosRespuesta);
-//    }
+    @PostMapping("/register")
+    @Transactional
+    @Operation(summary = "Registra un usuario en la base de datos (USER)")
+    public ResponseEntity<DatosRespuestaUsuario> registrar(
+            @RequestBody @Valid DatosRegistroUsuario datosRegistro,
+            UriComponentsBuilder uri) {
+
+        // Llama al servicio para crear un usuario y obtener los datos de respuesta
+        DatosRespuestaUsuario datosRespuesta = usuarioService.crearUsuarioUser(datosRegistro);
+
+        // Construye la URL de la ubicación del nuevo usuario registrado
+        URI url = uri.path("{id}").buildAndExpand(datosRespuesta.id()).toUri();
+
+        // Devuelve una respuesta con código 201 Created y los datos del usuario registrado
+        return ResponseEntity.created(url).body(datosRespuesta);
+    }
 
     /**
      * Endpoint para listar todos los usuarios activos.

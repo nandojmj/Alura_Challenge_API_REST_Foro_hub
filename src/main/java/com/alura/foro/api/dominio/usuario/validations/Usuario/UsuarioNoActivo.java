@@ -20,7 +20,7 @@ public class UsuarioNoActivo implements ValidadorUsuario {
 
         var usuarioNoActivo = usuarioRepository.findActivoByEmail(datosActualizar.email());
         if (!usuarioNoActivo){
-            throw new UnauthorizedAccessException("El usuario ya existe pero esta Inactivo, comunicate con el ADMIN");
+            throw new UnauthorizedAccessException("El usuario ya existe pero esta Inactivo");
         }
 
     }

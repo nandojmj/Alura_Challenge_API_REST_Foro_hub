@@ -26,8 +26,9 @@ public class UsuarioService {
     @Autowired
     List<ValidadorUsuario> validadores;
 
+
     /**
-     * Método para crear un nuevo usuario.
+     * Método para crear un nuevo usuario, desde ADMIN.
      *
      * @param datosRegistro Los datos de registro del nuevo usuario.
      * @return Los datos de respuesta del usuario creado.
@@ -44,6 +45,23 @@ public class UsuarioService {
     }
 
     /**
+     * Método para crear un nuevo usuario, USER.
+     *
+     * @param datosRegistro Los datos de registro del nuevo usuario.
+     * @return Los datos de respuesta del usuario creado.
+     */
+    public DatosRespuestaUsuario crearUsuarioUser(DatosRegistroUsuario datosRegistro) {
+        // Validar si el usuario ya existe
+        usuarioRepetido.repetido(datosRegistro);
+        // Crear un nuevo usuario con los datos recibidos
+        Usuario usuario = new Usuario(datosRegistro);
+        usuario.setContrasena(bCryptPasswordEncoder.encode(usuario.getContrasena()));
+        usuario.setPerfil(Perfil.USER);
+        usuarioRepository.save(usuario);
+        return new DatosRespuestaUsuario(usuario);
+    }
+
+    /**UsuarioServiceUsuarioService
             * Método para actualizar un usuario.
      *
              * @param datosActualizar Los datos actualizados del usuario.

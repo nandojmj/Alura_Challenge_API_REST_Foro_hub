@@ -20,7 +20,7 @@ public class UsuarioUpdate implements ValidadorUsuario {
         if (datosActualizar.id() != usuario.getId() ||
                 datosActualizar.perfil() != usuario.getPerfil() ||
                 datosActualizar.activo() != usuario.getActivo()) {
-            throw new UnauthorizedAccessException("Solo el ADMIN puede actualizar el perfil de rol, el ID o su estado");
+            throw new UnauthorizedAccessException("Solo el ADMIN puede actualizar el perfil");
         }
 
     }

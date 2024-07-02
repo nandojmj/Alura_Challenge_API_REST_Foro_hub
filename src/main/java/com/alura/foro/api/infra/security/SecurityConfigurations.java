@@ -60,7 +60,7 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.POST, "/cursos/**").hasAuthority(ADMIN.name())
                         .requestMatchers(HttpMethod.PUT, "/cursos/**").hasAuthority(ADMIN.name())
                         .requestMatchers(HttpMethod.DELETE, "/cursos/**").hasAuthority(ADMIN.name())
-                        .requestMatchers(HttpMethod.DELETE, "/respuestas/**").hasAuthority(ADMIN.name()).requestMatchers(HttpMethod.DELETE, "/cursos/**").hasAuthority(ADMIN.name()).requestMatchers(HttpMethod.DELETE, "/respuestas/").hasAuthority(ADMIN.name())
+                        .requestMatchers(HttpMethod.DELETE, "/respuestas/").hasAuthority(ADMIN.name())
                         .requestMatchers(HttpMethod.DELETE, "/topicos/**").hasAuthority(ADMIN.name())
                         // Requerir autenticación para cualquier otra solicitud
                         .anyRequest().authenticated()
