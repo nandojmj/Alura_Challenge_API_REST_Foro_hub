@@ -129,7 +129,7 @@ public class RespuestaController {
     @Transactional
     @Operation(
             summary = "Actualiza las respuestas en la base de datos",
-            description = "Esta petición solo la puede realizar el ROLE_ADMIN y el ROLE_USER")
+            description = "Para esta solicitud el usuario debe tener derechos de administrador (PERFIL ADMIN)")
     public ResponseEntity<DatosRetornoRespuesta> actualizar(
             @RequestBody @Valid DatosActualizarRespuesta datosActualizar) {
         // Obtiene la respuesta por su ID para actualizarla
@@ -147,8 +147,7 @@ public class RespuestaController {
     }
 
     /**
-     * Elimina una respuesta por su ID en la base de datos.
-     * Solo puede ser realizada por usuarios con ROLE_ADMIN o ROLE_USER.
+     * Elimina una respuesta por su ID en la base de datos
      *
      * @param id El ID de la respuesta a eliminar.
      * @return ResponseEntity indicando el éxito de la operación.

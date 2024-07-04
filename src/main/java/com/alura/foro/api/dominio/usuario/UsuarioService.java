@@ -48,7 +48,7 @@ public class UsuarioService {
      * Método para crear un nuevo usuario, USER.
      *
      * @param datosRegistro Los datos de registro del nuevo usuario.
-     * @return Los datos de respuesta del usuario creado.
+     * @return Los datos de respuesta del usuario creado con perfil USER.
      */
     public DatosRespuestaUsuario crearUsuarioUser(DatosRegistroUsuario datosRegistro) {
         // Validar si el usuario ya existe

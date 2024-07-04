@@ -6,7 +6,7 @@ package com.alura.foro.api.dominio.usuario;
 
 public enum Perfil {
 
-    ADMIN,
-    USER
+    USER,
+    ADMIN
 
 }
